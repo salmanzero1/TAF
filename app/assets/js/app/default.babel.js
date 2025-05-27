@@ -74,6 +74,43 @@
 				$('body').removeClass('menu-open')
 			})
 
+			$(document).ready(function () {
+				// Cache selectors for better performance
+				var $navLinks = $('.header__nav-list .nav-link');
+			
+				// Function to update the active class
+				function setActiveNavLink() {
+					var scrollPos = $(document).scrollTop(); // Get the current scroll position
+					var isAnySectionActive = false; // Flag to track if any section is active
+			
+					$navLinks.each(function () {
+						var section = $(this).attr('href'); // Get the target section ID from the link href
+						var $targetSection = $(section);    // Select the target section element
+			
+						if ($targetSection.length) {
+							var sectionOffsetTop = $targetSection.offset().top - 60; // Adjust for sticky header (if any)
+							var sectionHeight = $targetSection.outerHeight();   // Get section height
+			
+							// Check if the section is in view (adjust offset for sticky header if needed)
+							if (scrollPos >= sectionOffsetTop && scrollPos < sectionOffsetTop + sectionHeight) {
+								$navLinks.removeClass('active');   // Remove active class from all
+								$(this).addClass('active');        // Add active class to the current section's link
+								isAnySectionActive = true;         // Mark that a section is active
+							}
+						}
+					});
+			
+					// If no section is active, remove all active classes
+					if (!isAnySectionActive) {
+						$navLinks.removeClass('active');
+					}
+				}
+			
+				// Run the function on page scroll and on page load
+				$(window).on('scroll', setActiveNavLink);
+				setActiveNavLink();
+			});
+
 		},
 
 		lazyLoad: function () {

@@ -1,77 +1,120 @@
-h6,
-h5,
-h4,
-h3,
-h2,
-h1 {
-  margin-top    : 0;
-  margin-bottom : 0.5rem;
-  font-weight: 400;
-  line-height   : 1.2;
-
-
-}
-
 h1,
 .h1 {
-  font-size: px(32);
-}
+  @include font(32, 120%, 700);
 
-@media (min-width: 1200px) {
+  @include media-breakpoint-up(md) {
+    @include font(48, 120%, 700);
+  }
 
-  h1,
-  .h1 {
-    font-size: px(60);
+  @include media-breakpoint-up(lg) {
+    @include font(80, 120%, 700);
   }
 }
 
 h2,
 .h2 {
-  font-size: px(30);
-  line-height   : 1;
-}
+  @include font(32, 120%, 400);
 
-@media (min-width: 1200px) {
-
-  h2,
-  .h2 {
-    font-size: px(50);
-    
+  @include media-breakpoint-up(md) {
+    @include font(48, 120%, 400);
   }
 }
 
 h3,
 .h3 {
-  font-size: px(24);
-}
+  @include font(24, 120%, 700);
 
-@media (min-width: 1200px) {
-
-  h3,
-  .h3 {
-    font-size: px(34);
+  @include media-breakpoint-up(lg) {
+    @include font(32, 120%, 700);
   }
 }
 
-h4,.h4 {
-  font-size: calc(1.275rem + 0.3vw);
-}
+h4,
+.h4,
+blockquote {
+  @include font(22, 120%, 700);
 
-@media (min-width: 1200px) {
-  h4,.h4 {
-    font-size: 1.5rem;
+  @include media-breakpoint-up(lg) {
+    @include font(28, 120%, 700);
   }
 }
 
-h5,.h5 {
-  font-size: 1.25rem;
+h5,
+.h5 {
+  @include font(18, 120%, 700);
+
+  @include media-breakpoint-up(lg) {
+    @include font(24, 120%, 700);
+  }
 }
 
-h6,.h6 {
-  font-size: 1rem;
+h6,
+.h6 {
+  @include font(20, 120%, 700);
+
+  // @include media-breakpoint-up(lg) {
+  // 	@include font(20, 120%, 700);
+  // }
 }
 
-.lead-p {
-  font-size: px(20);
-  line-height: px(28);
+// .body-small {
+//   @include font(14, 160%, 400);
+
+//   // @include media-breakpoint-up(lg) {
+//   // 	@include font(14, 160%, 400);
+//   // }
+
+//   &--bold {
+//     font-weight: 600;
+//   }
+// }
+
+p,
+.body-normal {
+  @include font(14, 160%, 400);
+
+  @include media-breakpoint-up(lg) {
+    @include font(16, 160%, 400);
+  }
+
+  &--bold {
+    font-weight: 600;
+  }
 }
+
+.body-large {
+  @include font(16, 160%, 400);
+
+  @include media-breakpoint-up(lg) {
+    @include font(18, 160%, 400);
+  }
+}
+
+.body-extra-large {
+  @include font(16, 140%, 300);
+
+  @include media-breakpoint-up(lg) {
+    @include font(28, 140%, 300);
+  }
+}
+
+label,
+.label {
+  @include font(12, 100%, 400);
+  text-transform: uppercase;
+}
+
+.button {
+  text-decoration-line: none;
+  transition          : all 0.3s ease;
+
+  @include font(14, 100%, 500);
+
+  @include media-breakpoint-up(md) {
+    @include font(16, 100%, 500);
+  }
+
+
+}
+
+html[lang="ar"] {}

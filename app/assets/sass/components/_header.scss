@@ -80,14 +80,14 @@
 
         }
     }
-}
 
+    .menu-text {
+        display: none;
 
-
-// newly added css 
-.header {
-
-
+        @include media-breakpoint-down(lg) {
+            display: block;
+        }
+    }
 
     &__nav-list {
         margin-bottom     : 0px;
@@ -109,104 +109,47 @@
 
         li {
             a {
-                color: $white;
+                color      : $white;
+                font-size  : 18px;
+                font-weight: 600;
+
+                @include media-breakpoint-down(lg) {
+                    font-size: 32px;
+                }
+
+                &.animated-line {
+                    &::after {
+                        @include media-breakpoint-down(lg) {
+                            display: none;
+                        }
+                    }
+                }
 
                 &.active {
-                    font-weight: 700;
+                    @include media-breakpoint-up(lg) {
+                        &::after {
+                            content         : "";
+                            position        : absolute;
+                            bottom          : 0;
+                            left            : 0;
+                            width           : 100%;
+                            height          : 1px;
+                            background-color: white;
+                            transition      : width 0.3s ease;
+                            opacity         : 0.6;
+                            text-decoration : none;
+                        }
+                    }
                 }
             }
         }
-
-
-        // li {
-        //     display: inline-block;
-
-        //     @include media-breakpoint-up(lg) {
-        //         width     : 85px;
-        //         text-align: center;
-        //     }
-
-        //     @include media-breakpoint-down(lg) {
-        //         text-align: left;
-        //         width     : 100%;
-        //     }
-
-
-        //     a {
-        //         text-decoration: none;
-        //         color          : #FFF;
-
-        //         font-size     : 18px;
-        //         font-style    : normal;
-        //         font-weight   : 400;
-        //         line-height   : normal;
-        //         white-space   : nowrap;
-        //         position      : relative;
-        //         padding-bottom: 5px;
-
-        //         @include media-breakpoint-down(lg) {
-        //             color      : #FFF;
-        //             font-size  : 32px;
-        //             font-style : normal;
-        //             font-weight: 400;
-        //             line-height: 120%;
-        //         }
-
-        //         @include media-breakpoint-up(lg) {
-        //             &:hover {
-        //                 font-weight: 700;
-        //             }
-
-        //             &.active {
-        //                 font-weight: 700;
-        //             }
-        //         }
-        //     }
-        // }
-
     }
+}
 
-    .header__contact {
-        @include media-breakpoint-down(lg) {
-            margin-top: 120px;
-        }
-
-        a {
-            background-color: #2000FF;
-            border          : 1px solid #fff;
-            padding         : 10px 24px;
-            border-radius   : 10px;
-            text-decoration : none;
-            color           : #FFF;
-
-            font-size  : 16px;
-            font-style : normal;
-            font-weight: 400;
-            line-height: 120%;
-            white-space: nowrap;
-
-            /* 32.688px */
-            @include media-breakpoint-up(lg) {
-                width: 120px;
-            }
-
-            @include media-breakpoint-down(lg) {
-                width      : 100%;
-                text-align : center;
-                color      : #FFF;
-                font-size  : 18px;
-                font-weight: 500;
-                line-height: 100%;
-            }
-
-            &:hover {
-                background-color: #fff; // Change background color on hover
-                color           : #2000FF; // Change text color on hover
-                transition      : background-color 0.3s ease, color 0.3s ease; // Smooth transition
-                font-weight     : 700;
-
-            }
-        }
-    }
-
+.main-logo {
+    position : absolute;
+    top      : 60px;
+    left     : 50%;
+    transform: translateX(-50%);
+    z-index  : 2;
 }
