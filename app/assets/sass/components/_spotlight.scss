@@ -1,0 +1,35 @@
+// .spotlight {
+// 	.swiper-pagination {
+// 		text-align: center;
+// 		right     : 0;
+// 		left      : auto;
+// 		bottom    : 35px;
+
+// 		@include media-breakpoint-up(lg) {
+// 			text-align: right;
+// 			right     : 0;
+// 			bottom    : 60px;
+// 		}
+
+// 		&-bullet {
+// 			background   : $white;
+// 			opacity      : 0.3;
+// 			border-radius: 0;
+// 			width        : 9px;
+// 			height       : 9px;
+// 			margin       : 9px !important;
+// 			transition   : all 0.3s ease-in-out;
+
+// 			@include media-breakpoint-up(lg) {
+// 				margin: 10px !important;
+// 				width : 13px;
+// 				height: 13px;
+// 			}
+
+// 			&-active {
+// 				transform: rotate(45deg);
+// 				opacity  : 1;
+// 			}
+// 		}
+// 	}
+// }

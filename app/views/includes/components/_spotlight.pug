@@ -1,0 +1,40 @@
+-
+	var spotlightData = [
+		{
+			type: "image",
+			src: "spotlight/slide-1.png",
+			title: "Souq Mina Zayed: <br /> Where Tradition Thrives",
+			titleAr: "سوق ميناء زايد:<br> سوق الثقافة والحِرف اليدوية في أبوظبي",
+			disc: "Discover the historic port of Abu Dhabi — rooted in culture, <br /> known for its charm, and thriving with life.",
+			discAr: "اكتشف سوق أبوظبي النابض بالحياة، حيث تجد الحِرف اليدوية والمأكولات واكثر."
+		},
+		//- {
+		//- 	type: "video",
+		//- 	//- src: "spotlight/slide-2.png",
+		//- 	title: "lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+		//- 	titleAr: "lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+		//- 	disc: "lorem ipsum dolor sit amet, consectetur adipiscing elit. <br /> Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		//- 	discAr: "lorem ipsum dolor sit amet, consectetur adipiscing elit. <br /> Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+		//- }
+	]
+
+section.spotlight-section.relative.z-0
+	.spotlight.w-full.h-screen(class="min-h-[600px] lg:min-h-[800px]")
+
+		.swiper-wrapper
+
+			each slide in spotlightData
+				.swiper-slide.relative.mask
+					if slide.type==='image'
+						+img(slide.src, "Souq Mina Zayed", "w-full h-full object-cover", false)
+					else
+						video.w-full.h-full.object-cover(autoplay muted loop playsinline)
+							source(src=paths.video+"/sample.mp4" type="video/mp4")
+							| Your browser does not support the video tag.
+					.container.relative
+						.absolute.flex.items-center.justify-center.z-10(class="top-[50%] left-[50%] translate-y-[-50%] max-lg:w-full max-lg:translate-x-[-50%] lg:left-0 max-lg:text-center")
+							.text-white.max-w-4xl.px-6
+								h1(class="h1 mb-10 lg:mb-[48px]") 
+									+translate(slide.title, slide.titleAr)
+								p(class="body-extra-large mb-10 lg:mb-[48px]")
+									+translate(slide.disc, slide.discAr)

@@ -1,0 +1,51 @@
+-
+	var cardData = [
+		{
+			src: "spotlight/slide-1.png",
+			title: "Artisan Crafts",
+			disc: "Handwoven textiles, pottery, spices, and antiques."
+		},
+		{
+			src: "spotlight/slide-2.png",
+			title: "Emirati Influence",
+			disc: "A space rooted in local traditions, curated for today’s lifestyle."
+		},
+		{
+			src: "spotlight/slide-1.png",
+			title: "Traditional Markets",
+			disc: "Explore Al Mina Fruit & Vegetable Market and Carpet Market, where heritage shopping thrives."
+		}
+	]
+
+section(class="section discover-bg" id="about")
+	.container
+		div(class="grid grid-cols-12 md:gap-6 lg:gap-8")
+
+			div(class="flex flex-col justify-center col-span-12 md:col-span-6 lg:col-span-5 relative md:after:absolute md:after:w-screen md:after:h-full md:after:-right-0 md:after:bg-white md:after:z-10 discover-bg-after")
+				div(class="flex flex-col relative z-20")
+					+heading("A Living Expression of Emirati Culture", "h2", "mb-10 lg:mb-[48px]")
+					+paragraph("Step into a souk that reflects the spirit of Abu Dhabi’s rich traditions while embracing the vibrancy of the present.", "text-[#636569] mb-10 lg:mb-[48px]")
+					div(class="template-slider-arrows relative gap-6 hidden md:flex")
+						div(class="swiper-button-prev btn-lg-prev max-md:hidden after:hidden !relative !top-auto !left-auto !right-auto !m-0 font-brown rtl:rotate-[180deg] border rounded-full !w-12 !h-12")
+							span(class="material-symbols-outlined text-[24px]") arrow_left_alt
+						div(class="swiper-button-next btn-lg-next max-md:hidden after:hidden !relative !top-auto !left-auto !right-auto !m-0 font-brown rtl:rotate-[180deg] border rounded-full !w-12 !h-12")
+							span(class="material-symbols-outlined text-[24px]") arrow_right_alt
+
+			div(class="flex flex-col justify-center col-span-12 md:col-span-6 lg:col-span-7")
+				div(class="w-full")
+					.discover-card.relative
+						div(class="swiper-wrapper !pl-0")
+							each card in cardData
+								div(class="swiper-slide !w-[280px] lg:!w-[418px] mask")
+									+img(card.src, "Souq Mina Zayed", "w-full h-[330px] lg:h-[516px] object-cover", false)
+									div(class="w-full absolute bottom-0 left-0 z-10 flex flex-col gap-4 lg:gap-5 px-4 py-4 lg:px-5 lg:py-8 text-white")
+										h6.font-medium !{card.title}
+										p.text-base.font-light !{card.disc}
+										div
+											+linkButton('Learn More','north_east','16', '#.', 'class','true','')
+						div(class="md:hidden swiper-discover-pagination absolute z-10 !w-full !top-auto text-center px-20")
+						div(class="template-slider-arrows relative gap-6 md:hidden flex justify-between mt-10")
+							div(class="swiper-button-prev btn-sm-prev md:hidden after:hidden !relative !top-auto !left-auto !right-auto !m-0 font-brown rtl:rotate-[180deg] border rounded-full !w-12 !h-12")
+								span(class="material-symbols-outlined text-[24px]") arrow_left_alt
+							div(class="swiper-button-next btn-sm-next md:hidden after:hidden !relative !top-auto !left-auto !right-auto !m-0 font-brown rtl:rotate-[180deg] border rounded-full !w-12 !h-12")
+								span(class="material-symbols-outlined text-[24px]") arrow_right_alt

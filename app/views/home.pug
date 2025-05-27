@@ -1,0 +1,15 @@
+extends layouts/layout.pug
+
+block pageTitle
+	- var title_en="TAF | Home"
+	- var desc_en=""
+	- var title_ar="TAF | Home"
+	- var desc_ar=''
+	- var link_en=""
+	- var link_ar=""
+
+block content
+	include includes/components/_spotlight.pug
+	include includes/components/_discover.pug
+	include includes/components/_dummy.pug
+	include includes/components/_test.pug

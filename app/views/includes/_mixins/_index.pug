@@ -1,0 +1,149 @@
+//------- MIXIN USED FOR MODON START
+
+mixin button(text, type, className, hasFilled=false, secondary=false)
+	- var filledClass = hasFilled ? 'font-white border-color-white hover:!bg-white hover:!text-[#6E5540]' : ''
+	- var secondaryClass = secondary ? 'font-brown border-color-white bg-white hover:!bg-transparent hover:!text-white' : ''
+	button(type=type class=`button border font-brown border-color-brown rounded-lg px-4 py-2.5 hover:bg-[#6E5540] hover:text-white ${className+ ' ' + filledClass + ' ' + secondaryClass}`)=text
+
+mixin linkButton(text,iconName,iconSize,href,cssClass, secondaryBtn=false, noLink=false, fontBrown=false)
+	- var secondary = secondaryBtn ? 'font-white' : ''
+	- var afterClass = secondaryBtn ? 'bg-white' : 'bg-brown'
+	- var font = fontBrown ? "font-brown" : ""
+
+	if(noLink)
+		span(class=`inline-flex items-center gap-1.5 animated-underline relative font-brown font-medium text-sm no-underline ${cssClass+ ' ' + secondary}`)=text
+			i.material-symbols-outlined(style=`font-size: ${iconSize}px`, class=`rtl:rotate-[270deg]`)= iconName
+			em(class=`animated-line ${afterClass}`)
+	else if (fontBrown)
+		a(href=href class=`inline-flex items-center gap-1.5 animated-underline relative font-medium text-sm cursor-pointer no-underline ${cssClass+ ' ' + font}`)=text
+			i.material-symbols-outlined(style=`font-size: ${iconSize}px`, class=`rtl:rotate-[270deg]`)= iconName
+			em(class=`animated-line ${afterClass}`)
+	else
+		a(href=href class=`inline-flex items-center gap-1.5 animated-underline relative font-brown font-medium text-sm cursor-pointer no-underline ${cssClass+ ' ' + secondary}`)=text
+			i.material-symbols-outlined(style=`font-size: ${iconSize}px`, class=`rtl:rotate-[270deg]`)= iconName
+			em(class=`animated-line ${afterClass}`)
+
+mixin heading(title, headingTag, cssClass)
+	#{headingTag}(class=cssClass) !{title}
+
+mixin paragraph(text, cssClass)
+	p(class=cssClass) !{text}
+
+mixin arrowRightIcon(text,href,cssClass='')
+	a(href=href title=text class=`text-brown ${cssClass}`)=text
+		svg(width="11" height="10" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg")
+			path(d="M10.0156 0.5V7.5C10.0156 7.78125 9.76562 8 9.51562 8C9.23438 8 9.01562 7.78125 9.01562 7.5V1.71875L0.859375 9.875C0.765625 9.96875 0.640625 10 0.515625 10C0.359375 10 0.234375 9.96875 0.140625 9.875C-0.046875 9.6875 -0.046875 9.34375 0.140625 9.15625L8.29688 1H2.48438C2.23438 1 1.98438 0.75 2.01562 0.5C2.01562 0.21875 2.23438 0 2.51562 0H9.51562C9.76562 0 10.0156 0.25 10.0156 0.5Z" fill="white")
+
+mixin breadcrumbs(arrb)
+	.breadcrumbs-wrapper
+		.container
+			.breadcrumbs
+				each itemb in arrb
+					a(class=`breadcrumbs__link` title=itemb.navText href=itemb.navLink) #{itemb.navText}
+
+mixin translate(en,ar)
+	if(lang === 'en')
+		!=en
+	else
+		!=ar?ar:en
+
+mixin img(src,alt,cssClass='', lazy=true)
+
+	if(lazy)
+		img(src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==', data-src=`${paths.img}/${src}`, alt=alt class=`lazy ${cssClass}` )
+	else
+		img(src=`${paths.img}/${src}`, alt=alt class=cssClass)
+
+mixin dualImg(srcDesktop,srcMob,alt,cssClass='',lazy = true)
+	if(lazy)
+		picture
+			source(media='(min-width:992px)' data-srcset=`${paths.img}/${srcDesktop}`)
+			img(data-src=`${paths.img}/${srcMob}`, alt=alt class=`lazy ${cssClass}`)
+	else
+		picture
+			source(media='(min-width:992px)' srcset=`${paths.img}/${srcDesktop}`)
+			img(src=`${paths.img}/${srcMob}`, alt=alt class=cssClass)
+
+mixin textButton(href,text,cssClass='')
+	a(href=href title=text class=`link ${cssClass}`)=text
+
+mixin arrowIcon(cssClass='')
+	svg(xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='23.002' height='23.004' viewbox='0 0 23.002 23.004' class=`${cssClass} arrow`)
+		defs
+			clippath.clip-path
+			rect(data-name='Rectangle 3621' width='23.002' height='23.004' transform='translate(0 0)' fill='none' stroke='#fff' stroke-width='1')
+		g#Group_13512(data-name='Group 13512' transform='translate(0 0)' clip-path='url(#clip-path)')
+			path.arrow__circle(data-name='Path 5459' d='M11.51,22.5A11,11,0,1,1,22.5,11.512,11,11,0,0,1,11.51,22.5Z' fill='none' stroke='#fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='1')
+		path(data-name='Path 5460' d='M13.774,16.036,8.4,11.511l5.369-4.526' fill='none' stroke='#fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='1')
+
+mixin input(title,type,id)
+	if id
+		input.form-control(type=`${type}`, name=`${title}`, placeholder=`${title}`, id=`${id}`)
+	else 
+		input.form-control(type=`${type}`, name=`${title}`, placeholder=`${title}`)
+
+mixin textarea(title)
+	textarea.form-control(placeholder=`${title}`)
+
+mixin customSelect(title,small,optArr)
+	.custom-select-simple
+		select(class=`form-control ${small ? 'form-control--small' : ''}` placeholder=`${title}`)
+			if(optArr)
+				each list in optArr
+					option #{list}
+			else
+				option #{title}
+				option 1
+				option 2
+				option 3
+
+mixin custom-switch(text, label, id, noGap, addClass='')
+	div(class=`custom-switch ${addClass} ${noGap ? 'custom-switch--no-gap' : ''}`)
+		p=text
+		input.switch(type='checkbox' id=id)
+		label.switch-label(for=id)=label
+
+mixin phoneField(id)
+	link(rel="stylesheet" href="../assets/css/intlTelInput.css")
+	<input class="form-control" value='+971' placeholder="+971" id=#{id} name=#{id} class='' type="tel">
+
+mixin ribbon(title, value1, label1, value2, label2, btnText, hasOr)
+	.ribbon
+		.ribbon__title=title
+		.ribbon__values.d-none.d-lg-flex
+			.ribbon__col
+				.ribbon__value=value1
+				.ribbon__label=label1
+			if (hasOr)
+				.ribbon__col
+					span OR
+			.ribbon__col
+				.ribbon__value=value2
+				.ribbon__label=label2
+		+linkButton('#', btnText,'btn--white ribbon__btn')
+
+mixin banner(heading, image, logo=false, logoURL)
+	.banner.relative.mask(class="h-[555px] z-0")
+		+img(image, 'banner', 'w-full h-full object-cover', false)
+		if (logo)
+			div(class="w-[350px] h-[130px] absolute z-10 top-[50%] ltr:left-[50%] rtl:right-[50%] translate-x-[-50%] translate-y-[-50%] mt-14 flex justify-center items-center")
+				+img(logoURL, 'logo', 'max-w-[70%] md:max-w-[90%]', false)
+		else
+			h1.h1.text-center.z-10(class="w-full absolute top-[50%] translate-y-[-50%] text-white mt-14 px-7") #{heading}
+
+mixin contentBlock(title, image, cssClass='', flip=false)
+	.flex.grid-cols-2.items-center(class=`${flip ? 'flex-row-reverse' : ''} ${cssClass} gap-12 md:gap-20 max-md:flex-col`)
+		div(class="w-full md:w-1/2")
+			h2(class=``) !{title}
+			.rte-components(class="md:w-[80%] mt-10 lg:mt-[48px]")
+				if flip
+					p(class="text-[#636569] body-large") Souq Mina Zayed’s Fish Market delivers an unmatched variety of seafood sourced locally and internationally.
+					ul(class="text-[#636569] body-large")
+						li 104 fresh fish stalls with local and imported seafood
+						li 8 dried fish stalls offering preserved specialities104 fresh fish stalls with local and imported seafood
+						li Sourced from Tunisia, Turkey, Norway, India, Pakistan, Oman, Sri Lanka, and the Maldives
+				else
+					p.body-large(class="text-[#636569]") For over 40 years, the Fish Market at Souq Mina Zayed has been the city’s go-to destination for fresh, local seafood.
+					p.mt-10(class="text-[#636569]") With upgraded facilities and modern infrastructure, it continues to serve residents, chefs, and visitors with the finest daily catch.
+		div(class="w-full md:w-1/2")
+			+img(image, 'grid', 'w-full h-full object-cover')

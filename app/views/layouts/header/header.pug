@@ -1,0 +1,100 @@
+header(id="mainHeader" class="absolute left-0 bottom-0 z-10 w-full")
+	div(class="py-[25px] bg-blue max-lg:hidden")
+		.container
+			div(class="nav")
+				ul(class="w-full flex items-center justify-center gap-x-[55px] text-white font-semibold")
+					li.relative
+						a(href='about' class="animated-line") About
+					li.relative
+						a(href='principles' class="animated-line") Principles
+					li.relative
+						a(href='governance' class="animated-line") Governance
+					li.relative
+						a(href='real-estate' class="animated-line") Real Estate
+					li.relative
+						a(href='values' class="animated-line") Values
+					li.relative
+						a(href='contact' class="animated-line") Contact
+					li.relative
+						a(href='press' class="animated-line") Press
+
+				//- a(href="#." class="text-white active" data-menuanchor="firstPage") About
+				//- a(href="#." class="text-white" data-menuanchor="secondPage") Principles
+				//- a(href="#." class="text-white" data-menuanchor="thirdPage") Governance
+				//- a(href="#." class="text-white") Real Estate
+				//- a(href="#." class="text-white") Values
+				//- a(href="#." class="text-white") Contact
+				//- a(href="#." class="text-white") Press
+				//- if lang === "en"
+				//- 	+linkButton('About Souq Mina Zayed','north_east','16', '/en/about.html', '','true','')
+				//- else
+				//- 	+linkButton('حول سوق ميناء زايد','north_east','16', '/en/about.html', '','true','')
+				//- if lang === "en"
+				//- 	+linkButton('News & Stories','north_east','16', '/en/news.html', '','true','')
+				//- else
+				//- 	+linkButton('الأخبار والقصص','north_east','16', '/en/news.html', '','true','')
+				//- if lang === "en"
+				//- 	+linkButton('Contact Us','north_east','16', '/en/contact.html', '','true','')
+				//- else
+				//- 	+linkButton('اتصل بنا','north_east','16', '/en/contact.html', '','true','')
+
+	//- nav(class="main-nav xl:py-8 max-lg:hidden py-[25px]")
+	//- 	.container
+	//- 		div(class="flex items-center")
+	//- 			a(href="/en/home.html")
+	//- 				+img("header/main-logo.svg", "logo", "site-logo", false)
+	//- 			div(class="nav-items flex items-center gap-x-[42px] ml-auto")
+	//- 				div(class="nav__item-dropdown flex items-center gap-x-[10px] leading-[100%] text-white relative animated-header-line after:top-[28px]")
+	//- 					+translate("Explore Souqs","استكشف الأسواق")
+	//- 					span(class="material-symbols-outlined text-[22px] text-[#DED5CE] nav__icon") keyboard_arrow_down
+	//- 					//- img(src=`${paths.img}/header/chevron-down.svg` class="nav__icon" alt="down")
+	//- 					.nav__dropdown
+	//- 						a(href="/en/plant-souq.html" class="nav__dropdown--items")="Plants Market" 
+	//- 						a(href="/en/pet-souq.html" class="nav__dropdown--items")="Pets Market" 
+	//- 						a(href="/en/fish-souq.html" class="nav__dropdown--items")="Fish Market" 
+	//- 				a(href="/en/dining-leisure.html" class="nav-item flex items-center gap-x-[10px] leading-[100%] text-white relative animated-header-line after:top-[28px]")
+	//- 					+translate("Dining & Leisure","المطاعم والترفيه") 
+	//- 				a(href="/en/events.html" class="nav-item flex items-center gap-x-[10px] leading-[100%] no-underline text-white relative animated-header-line after:top-[28px]")
+	//- 					+translate("Events & Activities","الفعاليات والأنشطة")
+	//- 				if lang === "en"
+	//- 					+button('Plan Your Visit', 'button', 'open-modal-btn', "", "true")
+	//- 				else
+	//- 					+button('خطط لزيارتك', 'button', 'open-modal-btn', "", "true")
+	//- a(href="")
+	//- button.nav__item--btn Plan Your Visit
+
+//- header.absolute.left-0.top-0.z-10.w-full
+//- 	.header-mobile
+//- 		//- a(href="/en/home.html" class="header-mobile__logo")
+//- 		//- 	+img("header/main-logo.svg", "logo", "", false)
+//- 		.header-mobile__menu
+//- 			span(class="material-symbols-outlined text-[24px] text-[#ffffff]") menu
+//- +img("header/menu-open.svg", "open", "", false)
+
+	//- .sidebar
+	//- 	.sidebar__content
+	//- 		div(class="flex justify-end items-baseline")
+	//- 			button.sidebar__close
+	//- 				span(class="material-symbols-outlined text-[24px] text-[#ffffff] close") close
+	//- 				//- +img("header/menu-close.svg", "close", "", false)
+	//- 		ul(class="flex flex-col gap-y-[26px] pt-[34px] pl-0")
+	//- 			li
+	//- 				a(href="/en/about.html" class="text-white hover:opacity-80")="About Souq Mina Zayed" 
+	//- 			li.sidebar__item Explore Souqs
+	//- 				span(class="material-symbols-outlined text-[24px] text-[#DED5CE] sidebar__icon") keyboard_arrow_down
+	//- 				//- +img("header/chevron-down.svg", "down", "sidebar__icon", false)
+	//- 			li.sidebar__dropdown
+	//- 				a(href="/en/plant-souq.html" class="sidebar__dropdown--items")="Plants Market" 
+	//- 				a(href="/en/pet-souq.html" class="sidebar__dropdown--items")="Pets Market" 
+	//- 				a(href="/en/fish-market.html" class="sidebar__dropdown--items")="Fish Market" 
+	//- 			li
+	//- 				a(href="/en/dining-leisure.html" class="text-white hover:opacity-80")="Dining & Leisure" 
+	//- 			li
+	//- 				a(href="/en/events.html" class="text-white hover:opacity-80")="Events & Activities" 
+	//- 			li
+	//- 				a(href="/en/news.html" class="text-white hover:opacity-80")="News & Stories" 
+	//- 			li
+	//- 				span(class="text-white hover:opacity-80 open-modal-btn")="Plan Your Visit" 
+	//- 				//- a(href="" class="text-white hover:opacity-80")="Plan Your Visit" 
+	//- 			li
+	//- 				a(href="/en/contact.html" class="text-white hover:opacity-80")="Contact Us" 
