@@ -1,0 +1,262 @@
+.tabs {
+
+	&__head {
+		border-bottom: solid 1px #e1e3e6;
+		margin       : 40px 0 30px;
+
+		@include media-breakpoint-down(lg) {
+			overflow-x : auto;
+			overflow-y : hidden;
+			padding-top: 20px;
+		}
+
+		&--mob-arrow {
+
+			@include media-breakpoint-down(lg) {
+				border       : none 0;
+				margin-bottom: 0;
+			}
+
+			.tabs-nav__list {
+				@include media-breakpoint-down(lg) {
+					margin-right: 0;
+				}
+			}
+
+			.tabs-nav__link {
+				position: relative;
+
+				@include media-breakpoint-down(lg) {
+					padding: 20px;
+				}
+
+				@include media-breakpoint-down(lg) {
+					&:before {
+						position    : absolute;
+						left        : 50%;
+						transform   : translateX(-50%);
+						bottom      : 3px;
+						content     : '';
+						width       : 0;
+						height      : 0;
+						border-left : 10px solid transparent;
+						border-right: 10px solid transparent;
+
+					}
+				}
+
+				&.active {
+					@include media-breakpoint-down(lg) {
+						&:before {
+							border-bottom: 10px solid var(--tooltip-color);
+						}
+					}
+				}
+
+				@include media-breakpoint-down(lg) {
+					&:after {
+						display: none;
+					}
+				}
+
+
+			}
+		}
+
+		&--darkBlue-50 {
+			border-color: $blue;
+		}
+
+	}
+
+	&-nav {
+		display           : flex;
+		padding           : 0;
+		list-style-type   : none;
+		// margin-top     : 20px;
+
+		@include media-breakpoint-down(lg) {
+			justify-content: center;
+		}
+
+		&__list {
+			margin-right: 40px;
+		}
+
+		&__link {
+			color          : #929BA1;
+			text-decoration: none;
+			@include font(16, 19, normal);
+
+			@include media-breakpoint-up(lg) {
+				min-width: 190px;
+			}
+
+			@include media-breakpoint-down(lg) {
+				// padding    : 12px;
+				white-space: nowrap;
+			}
+
+			&.active {
+				color : $blue;
+				cursor: default;
+			}
+		}
+
+		&--styled {
+			justify-content   : left;
+			// margin         : 0;
+
+			// padding-bottom: 15px;
+
+			@include media-breakpoint-up(lg) {}
+
+			.tabs-nav__list {
+				@include media-breakpoint-up(lg) {}
+			}
+
+			.tabs-nav__link {
+				position: relative;
+
+				&:after {
+					position        : absolute;
+					left            : 0;
+					bottom          : -17px;
+					background-color: transparent;
+					content         : '';
+					width           : 100%;
+					height          : 3px;
+				}
+
+				&.active {
+					&:after {
+						background-color: $blue;
+					}
+				}
+			}
+		}
+
+	}
+
+	&__pane {
+		display: none;
+
+		&.active {
+			display: block;
+		}
+	}
+
+	&--white {
+		.tabs-nav__link {}
+
+		.tabs-nav__link.active {
+			background-color: $blue;
+			border-color    : $blue;
+			color           : white;
+		}
+	}
+
+	&--spacing-bottom {
+		margin-bottom: 50px;
+	}
+
+	&--head-spacing-bottom {
+		.tabs__head {
+			margin: 0 0 30px;
+
+			@include media-breakpoint-up(lg) {
+				margin: 0 0 80px;
+			}
+
+		}
+	}
+
+	&--spacing-tb {
+		margin-top   : 30px;
+		margin-bottom: 80px;
+
+		.tabs__head {
+			margin: 0 0 40px;
+		}
+	}
+
+	&--pane-border {
+		@include media-breakpoint-up(lg) {
+			.tabs__pane {
+				border-top    : 1px solid #a7d6ee;
+				border-bottom : 1px solid #a7d6ee;
+				padding-top   : 50px;
+				padding-bottom: 80px;
+			}
+		}
+	}
+
+	.field-validation-error {
+		font-size: 12px;
+		color    : red;
+		margin   : 10px 25px;
+		display  : inherit;
+	}
+
+	.field-validation-error~#the-count {
+		bottom: 50px;
+	}
+
+}
+
+.cb-w-image {
+	background-color: #fff;
+	border-radius   : 30px;
+	display         : flex;
+	overflow        : hidden;
+
+	@include media-breakpoint-down(lg) {
+		flex-direction: column-reverse;
+	}
+
+	&__col {
+		&--content {
+			// align-self: center;
+			padding: 30px 35px;
+
+			@include media-breakpoint-up(lg) {
+				width  : 60%;
+				padding: 85px 100px;
+			}
+
+		}
+
+		&--img-wrapper {
+			position: relative;
+
+			@include media-breakpoint-up(lg) {
+				width: 40%;
+			}
+
+			@include media-breakpoint-down(lg) {
+				height: 201px;
+			}
+
+		}
+	}
+
+	&__img {
+		width     : 100%;
+		height    : 101%;
+		object-fit: cover;
+	}
+
+	&__heading {
+		margin-bottom: 20px;
+	}
+
+	&__desc {
+		@include font(14, 20, normal);
+
+		@include media-breakpoint-up(lg) {
+			@include font(22, 30, 300);
+		}
+
+	}
+
+}

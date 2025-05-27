@@ -1,97 +1,52 @@
-footer(class="bg-[#6E5540] text-[#f7f7f7]")
-	.container
-		div(class="flex justify-center gap-[50px] xl:gap-[110px] max-lg:flex-col max-md:items-baseline pt-[70px] max-lg:items-center rtl:max-md:items-start")
-			div(class="w-full lg:w-auto flex flex-col justify-between gap-[66px] max-lg:flex-row max-lg:items-center")
-				a(href="")
-					+img("/header/main-logo.svg", "logo", "", false)
-				div(class="max-lg:hidden text-xs")
-					| © 2024 — All Rights reserved.
-			div(class="md:hidden max-md:w-full")
-				h5(class="pb-[24px] font-medium") Stay in touch
-				p Celebrate every occasion with us.
-				p Be part of our social circle.
-				div(class="flex flex-col gap-[48px] mt-10")
-					div(class="md:hidden flex gap-x-[21.4px]")
-						a(href="" class="hover:opacity-80")
-							+img("/footer/instagram.svg", "instagram", "w-[20px] h-[18px]", false)
-						a(href="" class="hover:opacity-80")
-							+img("/footer/facebook-f.svg", "facebook", "w-[20px] h-[18px]", false)
-						a(href="" class="hover:opacity-80")
-							+img("/footer/youtube.svg", "youtube", "w-[20px] h-[18px]", false)
-					div(class="relative pt-[24px] md:hidden email-form")
-						input(type="email" class="bg-transparent border-b border-solid border-[#8d7664] pb-4 w-full text-sm email-input" value="your@email.com")
-						button(type="submit" class="absolute right-0 bottom-2 submit-button")
-							span(class="material-symbols-outlined text-[18px] text-[#ffffff] close rtl:rotate-180") east
-							//- +img("/footer/arrow-right.svg", "arrow", "w-[16px]", false)
-						p.message.absolute
-			div(class="max-md:hidden max-lg:w-full flex gap-[50px] xl:gap-[110px] mt-3 justify-between")
-				div(class="flex flex-col justify-between gap-y-[23px]")
-					div(class="flex flex-col gap-y-[23px]")
-						a(href="" class="font-normal text-[#f7f7f7] hover:opacity-80")="Discover Mina Zayed" 
-						a(href="" class="font-normal text-[#f7f7f7] hover:opacity-80")="Things to Explore" 
-						a(href="" class="font-normal text-[#f7f7f7] hover:opacity-80")="Plan Your Visit" 
-					div(class="flex flex-col gap-y-[16px]")
-						p.uppercase Built By
-						a(href="")
-							+img("/footer/modon-logo.svg", "logo", "max-w-[108px]", false)
-				div(class="flex flex-col justify-between gap-y-[23px]")
-					div(class="flex flex-col gap-y-[23px]")
-						a(href="" class="font-normal text-[#f7f7f7] hover:opacity-80") Contact Us
-						a(href="mailto:modon@gmail.com" class="font-normal flex items-center gap-x-3 text-[#f7f7f7] hover:opacity-80")
-							span(class="material-symbols-outlined text-[18px] text-[#ffffff]") mail
-							//- +img("/footer/envelope.svg", "envelope", "", false)
-							| modon@gmail.com
-						a(href="tel:+971-XX-XXXX-XXX" class="font-normal flex gap-x-3 text-[#f7f7f7] hover:opacity-80")
-							span(class="material-symbols-outlined text-[22px] text-[#ffffff] rtl:-rotate-[100deg]") call
-							//- +img("/footer/phone.svg", "phone", "", false)
-							+translate("+971 XX XXXX XXX","4400 698 02")
-					div(class="flex flex-col gap-y-[23px]")
-						a(href="" class="text-xs text-[#f7f7f7] hover:opacity-80")= "Terms & Conditions" 
-						a(href="" class="text-xs text-[#f7f7f7] hover:opacity-80")= "Privacy Policy" 
-				div(class="flex flex-col justify-between gap-[48px]")
-					div(class="flex flex-col")
-						h5(class="pb-[24px] font-medium") Stay in touch
-						p Celebrate every occasion with us.
-						p Be part of our social circle.
-					div(class="flex flex-col gap-[48px]")
-						div(class="flex items-center gap-x-[21.4px]")
-							a(href="" class="hover:opacity-80")
-								+img("/footer/instagram.svg", "instagram", "", false)
-							a(href="" class="hover:opacity-80")
-								+img("/footer/facebook-f.svg", "facebook", "", false)
-							a(href="" class="hover:opacity-80")
-								+img("/footer/youtube.svg", "youtube", "", false)
-						div(class="relative email-form")
-							input(type="email" class="bg-transparent border-b border-solid border-[#8d7664] pb-4 w-full email-input" value="your@email.com")
-							button(type="submit" class="absolute bottom-2.5 right-0 submit-button")
-								span(class="material-symbols-outlined text-[24px] text-[#ffffff] close rtl:rotate-180") east
-								//- +img("/footer/arrow-right.svg", "arrow", "", false)
-							p.message.absolute
+footer.footer.bg-dark.text-white
+  .container
+    .row.justify-content-between
+      // Headquarters and Other Locations Combined Section
+      .col-6.col-md-5.col-sm-6
+        // Headquarters Section
+        h5.footer__head Headquarters
+        a.underline-none(href="https://maps.app.goo.gl/knDk5c1L9P7K4DvRA?g_st=ic" target="_blank")
+          p.footer__desc-small 202 @ Emmay Tower <br /> Internet City, Dubai
+        // Other Locations Section
+        h5.footer__head.space-top-24 Other Locations 
+        p.footer__desc-small Riyadh, Saudi Arabia
+        p.footer__desc-small Cairo, Egypt
+        p.footer__desc-small Karachi, Pakistan
+        p.footer__desc-small Amman, Jordan
 
-			div(class="md:hidden flex-col gap-[50px] flex ")
-				div(class="flex flex-col gap-y-[23px]")
-					a(href="" class="font-normal text-[#f7f7f7] hover:opacity-80")="Discover Mina Zayed" 
-					a(href="" class="font-normal text-[#f7f7f7] hover:opacity-80")="Things to Explore" 
-					a(href="" class="font-normal text-[#f7f7f7] hover:opacity-80")="Plan Your Visit" 
-				div(class="flex flex-col gap-y-[23px]")
-					a(href="" class="font-normal text-[#f7f7f7] hover:opacity-80") Contact Us
-					a(href="mailto:modon@gmail.com" class="font-normal flex items-center gap-x-3 text-[#f7f7f7] hover:opacity-80")
-						span(class="material-symbols-outlined text-[18px] text-[#ffffff]") mail
-						//- +img("/footer/envelope.svg", "envelope", "", false)
-						| modon@gmail.com
-					a(href="tel:+971-XX-XXXX-XXX" class="font-normal flex gap-x-3 text-[#f7f7f7] hover:opacity-80")
-						span(class="material-symbols-outlined text-[22px] text-[#ffffff] rtl:-rotate-[100deg]") call
-						//- +img("/footer/phone.svg", "phone", "", false)
-						| +971 XX XXXX XXX
-					div(class="flex flex-col gap-y-[16px] pt-[45px]")
-						p Built By
-						a(href="")
-							+img("/footer/modon-logo.svg", "logo", "max-md:w-[108px]", false)
-			div(class="lg:hidden text-xs w-full md:text-left")
-				| © 2024 — All Rights reserved.
-			div(class="md:hidden flex flex-col gap-y-[23px]")
-				a(href="" class="text-xs text-[#f7f7f7]")="Terms & Conditions" 
-				a(href="" class="text-xs text-[#f7f7f7]")="Privacy Policy" 
+      // Say Hi Section
+      .col-5.col-md-3.col-sm-6
+        h5.footer__head Say Hi
+        p.footer__desc.mb-10 Get In Touch
+        a.footer__desc(href="mailto:info@lion.io") info@lion.io
 
-	div(class="mt-10 lg:mt-20")
-		+img("footer/footer-art.svg", "footer", "w-full object-cover h-[62px] lg:h-[100px] object-top", false)
+      // Social Section
+      .col-12.col-md-4.col-sm-6
+        h5.footer__head.space-top-mob Social
+        p.footer__desc.mb-0 You can always find us on social.
+        ul.list-inline.social-icons
+          li.list-inline-item
+            a(href="https://www.linkedin.com/company/thelioncreative/" target="_blank") 
+              +img("linkedIn.svg", 'Logo', '', false)
+          //- li.list-inline-item
+          //-   a(href="javascript:void(0)")
+          //-     +img("twitter.svg", 'Logo', '', false)
+          li.list-inline-item
+            a(href="https://www.instagram.com/lionads_official?igsh=NTlvN2NuNmx2bHBw&utm_source=qr" target="_blank") 
+              +img("instgram.svg", 'Logo', '', false)
+      
+    // Bottom Row for Logo and Copyright
+    .row.align-items-center.bottom-footer
+      .col-12.col-md-5.footer-logo
+        a(href="home.html")
+          +img("lion-logo.svg", 'Logo', '', false)
+      .col-12.col-md-6.text-md-right
+        p.footer__desc-small ©2024 LION. All Rights Reserved.
+        .footer__dual-link
+            a.footer__desc-small.text-white(href="#") Privacy
+            a.footer__desc-small.text-white(href="#") Terms & Conditions
+    .row
+      .col-12
+        hr.diveder
+    .row.col-12
+    p.footer__copywrite LION is a Fast Ventures company.

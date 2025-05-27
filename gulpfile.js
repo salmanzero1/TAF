@@ -306,8 +306,8 @@ function server() {
 }
 
 // private tasks
-// const pugDev = parallel(pugDevEn); // disable ar to decrease processing time
-const pugDev = parallel(pugDevEn, pugDevAr);
+const pugDev = parallel(pugDevEn); // disable ar to decrease processing time
+// const pugDev = parallel(pugDevEn, pugDevAr);
 const pugProd = parallel(pugProdEn, pugProdAr);
 const jsDev = series(jsBabel);
 const jsProd = series(jsBabel, jsConcat, jsMinify);

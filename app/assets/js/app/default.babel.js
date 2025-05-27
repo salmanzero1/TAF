@@ -17,8 +17,7 @@
 		disableAnimation: false,
 		lifestyleSwiper: null,
 		markersArray: [],
-		tabsList: document.querySelector(".tabs-list"),
-
+		//	gallerySlider: '',
 		detectDevice() {
 
 			(function (a) {
@@ -60,95 +59,430 @@
 		},
 
 		addEventListner() {
-			$('.header-mobile__menu').click(function () {
-				$('.sidebar').addClass('active')
-				$('body').addClass('overflow-hidden')
-			})
-			$('.sidebar__close').click(function () {
-				$('.sidebar').removeClass('active')
-				$('body').removeClass('overflow-hidden')
-			})
-			$('.floating-tools__btn').click(function () {
-				$(this).toggleClass('active')
-				$('.floating-tools .tools').toggleClass('active')
-			})
-			$('.header__btn').click(function () {
-				$('.header__container').toggleClass('expanded');
-				if ($('.header__container').hasClass('expanded')) {
-					$('.header__search').focus();
-				}
-			});
-			$('.header-mobile__search').on('click', function (e) {
-				e.stopPropagation();
-				var $wrapper = $('.header-mobile__wrapper');
-				var $icon = $(this);
+			$('.header__menu').click(function () {
+				$('header.header').toggleClass('active')
+				$('body').toggleClass('menu-open')
 
-				// toggle the wrapper’s expanded state
-				$('.header-mobile__wrapper').toggleClass('expanded');                // adds/removes .expanded :contentReference[oaicite:0]{index=0}
+				$('.header.active .nav-link').click(function () {
+					$('header.header').removeClass('active')
+					$('body').removeClass('menu-open')
+				})
+			})
 
-				// toggle a class on the icon itself
-				$('.header-mobile__input').toggleClass('expanded-search');            // adds/removes .expanded-search :contentReference[oaicite:1]{index=1}
-
-				// if we just expanded, focus the input
-				if ($('.header-mobile__wrapper').hasClass('expanded')) {
-					$('.header-mobile__input').focus();            // jQuery’s .focus() to put cursor in the field :contentReference[oaicite:2]{index=2}
-				}
-			});
-			$('.sidebar__item').click(function () {
-				$('.sidebar__dropdown').toggleClass('active')
-				$('.sidebar__icon').toggleClass('active')
-			});
+			$('.menu__close').click(function () {
+				$('.header.header').removeClass('active')
+				$('body').removeClass('menu-open')
+			})
 
 		},
 
 		lazyLoad: function () {
+
 			var lazyLoadInstance = new LazyLoad({
 				// Your custom settings go here
 			});
 		},
-
+		
 		swiper: function () {
-
-			const spotlight = new Swiper('.spotlight', {
-				loop: true,
-				effect: 'fade',
-				autoplay: {
-					delay: 2500,
-					disableOnInteraction: false,
-				},
-				pagination: {
-					el: '.swiper-pagination',
-				},
-			});
-
-			const discoverSwiper = new Swiper('.discover-card', {
-				slidesPerView: "auto",
-				// freeMode: true,
-				spaceBetween: 16,
-				pagination: {
-					el: ".swiper-discover-pagination",
-					clickable: true,
-				},
-			});
-
-			const nextButtons = document.querySelectorAll('.btn-sm-next, .btn-lg-next');
-			const prevButtons = document.querySelectorAll('.btn-sm-prev, .btn-lg-prev');
-
-			nextButtons.forEach(btn =>
-				btn.addEventListener('click', () => {
-					discoverSwiper.slideNext();
-				})
-			);
-			prevButtons.forEach(btn =>
-				btn.addEventListener('click', () => {
-					discoverSwiper.slidePrev();
-				})
-			);
 
 		},
 
-		random() {
+		tabs() {
 
+			const tabNav = $('.tabs__head');
+			const activeClass = 'active';
+			let $this;
+			let currentIndex;
+
+			$.each(tabNav, function (index, elem) {
+				const selector = $(elem);
+				const tabNavList = selector.find('> ul > li');
+				const tabPane = selector.parent().find('.tabs__pane');
+				tabNavList.eq(0).find('> a').addClass(activeClass);
+				tabPane.eq(0).addClass(activeClass);
+
+				tabNavList.on('click', function (e) {
+					$this = $(this);
+
+					if (app.isMobile) {
+						//	$this.find('a').get(0).scrollIntoView(true)
+					}
+					else {
+						//	$this.find('a').get(0).scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" })
+					}
+
+
+					// if (!$this.parent().hasClass('js-hash-clickable')) {
+					// 	// debugger
+					// 	e.preventDefault()
+					// }
+					currentIndex = $this.index();
+					if ($this.parent().hasClass('js-has-slide-to'))
+						app.tabSwiper.slideTo(currentIndex);
+
+
+					tabPane.removeClass(activeClass);
+					if ($this.closest('.tabs__head').next(".tabs__body").length) {
+						$this.closest('.tabs__head').next(".tabs__body").find('> .tabs__pane').eq(currentIndex).addClass(activeClass);
+					} else {
+						$this.closest('.tabs__head').next(".tabs__outer").find('> .tabs__body').find('> .tabs__pane').eq(currentIndex).addClass(activeClass);
+					}
+
+
+					// console.log($this.closest('.tabs__head').next().find('.tabs__pane').eq(currentIndex).find('.tabs-nav__list .tabs-nav__link').eq(0).trigger('click'))
+					tabNavList.find('> a').removeClass(activeClass);
+
+					if (!$this.find('> a').hasClass(activeClass)) {
+						$this.find('> a').addClass(activeClass);
+					}
+
+
+					if ($this.parents('.tabs__body').length === 0) {
+
+
+						$('.tabs__pane.active').find('.tabs-nav__list .tabs-nav__link').eq(0).trigger('click')
+					}
+					// console.log("clicked")
+				});
+
+			});
+			let url = window.location;
+			let qs = url.hash;
+			let qsText = qs.slice(1, qs.length);
+
+
+			if (qsText) {
+
+				$('[href="#' + qsText + '"]').click();
+
+
+
+				// if ($('.js-hash-clickable').length) {
+				// 	$('[href="#' + qsText + '"]').click();
+				// 	$('html, body').animate({
+				// 		scrollTop: $('[href="#' + qsText + '"]').offset().top - 100
+				// 	}, 300);
+				// } else {
+				// 	$('.tabs-nav__list').each(function (i, elem) {
+				// 		if ($(elem).find('.tabs-nav__link').text().toLowerCase() === qsText) {
+				// 			$(elem).find('.tabs-nav__link').click();
+				// 			$('html, body').animate({
+				// 				scrollTop: $('.tabs__body').offset().top
+				// 			}, 300);
+				// 		}
+				// 	});
+				// }
+			}
+
+		},
+
+		rangeSlider() {
+			let homeLoanAmount = $('#home-loan-amount').attr('data-min');
+			let homeLoanTenure = $('#home-loan-tenure').attr('data-min');
+			let personalLoanAmount = $('#personal-loan-amount').attr('data-min');
+			let personalLoanTenure = $('#personal-loan-tenure').attr('data-min');
+			let autoLoanAmount = $('#auto-loan-amount').attr('data-min');
+			let autoLoanTenure = $('#auto-loan-tenure').attr('data-min');
+
+
+
+			var $range = $(".js-range-slider"),
+				min = 1,
+				max = 10;
+
+			$range.ionRangeSlider({
+				skin: "modern",
+				type: "single",
+				min: min,
+				max: max,
+				from: 10,
+				prettify: function (num) {
+					var tmp_min = min,
+						tmp_max = max,
+						tmp_num = num;
+
+					if (min < 0) {
+						tmp_min = 0;
+						tmp_max = max - min;
+						tmp_num = num - min;
+						tmp_num = tmp_max - tmp_num;
+						return tmp_num + min;
+					} else {
+						num = max - num;
+						return num;
+					}
+				}
+			});
+
+
+			$(".range-slider").each(function () {
+
+				var $this = $(this),
+					rangeInput = $(this);
+
+				var min =
+					$this.data("min") === "" || $this.data("min") === undefined
+						? 5
+						: $this.data("min");
+				var max =
+					$this.data("max") === "" || $this.data("max") === undefined
+						? 30
+						: $this.data("max");
+
+				// debugger
+
+				//console.log(min + ' : min');
+				//console.log(max + ' : max');
+
+				var reverse = function (num) {
+					return max - (num - min);
+				};
+
+
+
+
+				rangeInput.ionRangeSlider({
+
+
+					prettify_enabled: true,
+					prettify_separator: ",",
+
+					from: app.culture === 'ar' ? max : min,
+
+					prettify: function (num) {
+
+						if (app.culture === 'ar') {
+							return num = reverse(num);
+							/* var tmp_min = min,
+								tmp_max = max,
+								tmp_num = num;
+
+							if (min < 0) {
+								tmp_min = 0;
+								tmp_max = max - min;
+								tmp_num = num - min;
+								tmp_num = tmp_max - tmp_num;
+								return tmp_num + min;
+							} else {
+								num = max - num;
+								return num + 1;
+							} */
+
+						} else {
+
+							return num;
+
+						}
+
+
+					},
+
+					/* prettify: function (num) {
+						//console.log(num);
+
+						if (app.isRTL) {
+							num = reverse(num);
+						}
+
+						var tmp_min = min,
+							tmp_max = max,
+							tmp_num = num;
+
+						if (min < 0) {
+							tmp_min = 0;
+							tmp_max = max - min;
+							tmp_num = num - min;
+							tmp_num = tmp_max - tmp_num;
+							return tmp_num + min;
+						} else {
+							num = max - num;
+							return num;
+						}
+
+
+
+
+					}, */
+
+					/* 	onStart: function (data) {
+							fixPosition(data.slider, 0);
+						}, */
+
+					onChange: function (data) {
+
+
+
+						if ($(data.input).attr('id') === 'home-loan-amount') {
+
+
+							homeLoanAmount = data.from_pretty
+						}
+						if ($(data.input).attr('id') === 'home-loan-tenure') {
+							homeLoanTenure = data.from_pretty
+						}
+						if ($(data.input).attr('id') === 'personal-loan-amount') {
+							personalLoanAmount = data.from_pretty
+						}
+						if ($(data.input).attr('id') === 'personal-loan-tenure') {
+							personalLoanTenure = data.from_pretty
+						}
+						if ($(data.input).attr('id') === 'auto-loan-amount') {
+							autoLoanAmount = data.from_pretty
+						}
+						if ($(data.input).attr('id') === 'auto-loan-tenure') {
+							autoLoanTenure = data.from_pretty
+						}
+
+
+						app._calculateLoan(homeLoanAmount, homeLoanTenure, parseFloat($('#home-loan-values').attr('data-interest')), $('#home-loan-values'))
+						app._calculateLoan(personalLoanAmount, personalLoanTenure, parseFloat($('#personal-loan-values').attr('data-interest')), $('#personal-loan-values'))
+						app._calculateLoan(autoLoanAmount, autoLoanTenure, parseFloat($('#auto-loan-values').attr('data-interest')), $('#auto-loan-values'))
+
+
+
+
+
+
+					},
+
+				});
+
+			});
+
+
+			$(".range-slider-100").ionRangeSlider({
+				prettify_enabled: true,
+				prettify_separator: ",",
+				onChange: function (data) {
+
+
+
+					if ($(data.input).attr('id') === 'home-loan-amount') {
+						homeLoanAmount = data.from
+					}
+					if ($(data.input).attr('id') === 'home-loan-tenure') {
+						homeLoanTenure = data.from
+					}
+					if ($(data.input).attr('id') === 'personal-loan-amount') {
+						personalLoanAmount = data.from
+					}
+					if ($(data.input).attr('id') === 'personal-loan-tenure') {
+						personalLoanTenure = data.from
+					}
+					if ($(data.input).attr('id') === 'auto-loan-amount') {
+						autoLoanAmount = data.from
+					}
+					if ($(data.input).attr('id') === 'auto-loan-tenure') {
+						autoLoanTenure = data.from
+					}
+
+
+					app._calculateLoan(homeLoanAmount, homeLoanTenure, parseFloat($('#home-loan-values').attr('data-interest')), $('#home-loan-values'))
+					app._calculateLoan(personalLoanAmount, personalLoanTenure, parseFloat($('#personal-loan-values').attr('data-interest')), $('#personal-loan-values'))
+					app._calculateLoan(autoLoanAmount, autoLoanTenure, parseFloat($('#auto-loan-values').attr('data-interest')), $('#auto-loan-values'))
+
+
+
+
+
+
+				},
+			});
+
+		},
+
+		accordion: function () {
+			var elem = $(".accordion"),
+				elemTarget = elem.find(".accordion__heading"),
+				activeClass = "accordion--active",
+				contentClass = ".accordion__content",
+				headerHeight = $(".header").height(),
+				topOffsetValue;
+			$('.tabs__cont').on('click', '.accordion__heading', function (e) {
+				e.stopPropagation();
+				// //console.log("accordion");
+				var $this = $(this);
+				$this.parent(elem).toggleClass(activeClass);
+				if ($this.parent(elem).hasClass(activeClass)) {
+					$this.parent(elem).find(contentClass).stop().slideDown(200);
+					$this.parent(elem).siblings().find(contentClass).stop().slideUp(500, function () {
+						//	topOffsetValue = $this.offset().top;
+
+						//$("html").scrollTop(topOffsetValue - headerHeight)
+					});
+					$this.parent(elem).siblings().removeClass(activeClass);
+				} else {
+					$this.parent(elem).find(contentClass).stop().slideUp();
+				}
+			});
+
+			$('.accordion__icon').click(function () {
+
+
+				$(this).next('.accordion__heading').trigger('click')
+			})
+			// multi accordion
+			$('.multi-toggle__icon').click(function (e) {
+
+				var $this = $(this);
+
+
+				$this.parent().find('.inner').eq(0).slideToggle().toggleClass('show');
+				$this.toggleClass('active')
+				e.stopPropagation()
+				console.log($this)
+				// if ($this.next().hasClass('show')) {
+				// 	$this.removeClass('active');
+				// 	$this.next().removeClass('show');
+				// 	$this.next().slideUp(350);
+				// } else {
+				// 	$this.parent().parent().find('li .inner').removeClass('show');
+				// 	$this.parent().parent().find('li .inner').slideUp(350);
+				// 	$this.addClass('active');
+				// 	$this.next().toggleClass('show');
+				// 	$this.next().slideToggle(350);
+				// }
+			});
+
+		},
+
+		spotlight: function () {
+
+			$(document).ready(function () {
+				// Get both video elements
+				var desktopVideo = $('video.desktop_video').get(0);
+				var mobileVideo = $('video.mobile_video').get(0);
+
+				// Initially hide the unmute icon since videos are muted by default
+				$('#muteButton .icon-unmute').hide();
+
+				$('#muteButton').on('click', function () {
+					// Check if the desktop video is visible
+					if ($('video.desktop_video').is(':visible')) {
+						toggleMute(desktopVideo);
+					}
+					// Check if the mobile video is visible
+					else if ($('video.mobile_video').is(':visible')) {
+						toggleMute(mobileVideo);
+					}
+				});
+
+				// Function to toggle mute/unmute
+				function toggleMute(video) {
+					if (video.muted) {
+						video.muted = false;
+						$('#muteButton .icon-mute').hide();   // Hide mute icon
+						$('#muteButton .icon-unmute').show(); // Show unmute icon
+					} else {
+						video.muted = true;
+						$('#muteButton .icon-unmute').hide(); // Hide unmute icon
+						$('#muteButton .icon-mute').show();   // Show mute icon
+					}
+				}
+			});
+		},
+
+		random() {
 		},
 
 		init() {
@@ -158,19 +492,10 @@
 			app.addEventListner();
 			app.lazyLoad();
 			app.swiper();
-			// app.tabs();
-			// app.sampleForm();
-			// app.eventCard();
-			// app.modalInit();
-			// app.modalOverlay();
-			// app.checkBoxes();
-			// app.checkBtn();
+			app.tabs();
 			// app.customSelect();
-			// app.accordion();
-			// app.interactiveMap();
-			// app.scrollAbleTabs();
-			// app.tooltip();
-			// app.scrollIntoView();
+			app.accordion();
+			app.spotlight();
 			app.random();
 		},
 	}

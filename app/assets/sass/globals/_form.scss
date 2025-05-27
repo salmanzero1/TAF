@@ -1,0 +1,510 @@
+.form {
+    [class^="col"] {
+        margin-bottom: 25px;
+
+        @include media-breakpoint-up(lg) {
+            margin-bottom: 30px;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &-control {
+        background-color: transparent;
+        border          : 1px solid #243746;
+        color           : #243746;
+        display         : block;
+        width           : 100%;
+        height          : 50px;
+        padding         : 10px 25px;
+        font-size       : 1rem;
+        font-weight     : 400;
+        line-height     : 1.5;
+        background-clip : padding-box;
+        border-radius   : 30px;
+        outline         : 0 none;
+        transition      : border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+        @include media-breakpoint-up(lg) {
+            height: 60px;
+        }
+
+        &--small {
+            height: 45px;
+        }
+
+        &::-webkit-input-placeholder {
+            color: #243746;
+        }
+
+        &::-moz-placeholder {
+            color: #243746;
+        }
+
+        &:-ms-input-placeholder {
+            color: #243746;
+        }
+
+        &:-moz-placeholder {
+            color: #243746;
+        }
+    }
+}
+
+
+.field-error {
+    .form-control {
+        border-color: red;
+
+
+    }
+}
+
+
+label {
+    padding      : 0 27px;
+    margin-bottom: 10px;
+}
+
+label.error {
+    color        : red;
+    font-size    : 12px;
+    margin-bottom: 0;
+}
+
+.iban-bumber {
+    background-color: $blue;
+    border-radius   : 15px;
+    padding         : 18px 26px;
+
+    input {
+        font-size    : px(18);
+        color        : $white;
+        border       : none;
+        padding      : 0;
+        border-radius: 0;
+
+        &::-webkit-input-placeholder {
+            color: $white;
+        }
+
+        &::-moz-placeholder {
+            color: $white;
+        }
+
+        &:-ms-input-placeholder {
+            color: $white;
+        }
+
+        &:-moz-placeholder {
+            color: $white;
+        }
+    }
+}
+
+textarea.form-control {
+    min-height : 240px;
+    padding-top: 20px;
+    resize     : none;
+}
+
+.custom-select-simple {
+    position: relative;
+
+    select {
+        appearance: none;
+    }
+
+    &:after {
+        content       : "";
+        background    : url("../images/down-arrow.svg") center center no-repeat;
+        width         : 50px;
+        height        : 50px;
+        position      : absolute;
+        right         : 5px;
+        top           : 50%;
+        transform     : translateY(-50%);
+        pointer-events: none;
+    }
+}
+
+.form {
+    .col {
+        margin-bottom: 30px;
+    }
+
+    &__btn {
+        margin-top: 50px;
+    }
+}
+
+.textarea-wrapper {
+    position: relative;
+}
+
+.custom-switch {
+    position: relative;
+    margin  : 30px 0 40px;
+
+    @include media-breakpoint-up(lg) {
+        margin: 45px 0 80px;
+    }
+
+    p {
+        font-size: 16px;
+        margin   : 0;
+
+        @include media-breakpoint-up(lg) {
+            font-size: 20px;
+        }
+    }
+
+    &--no-gap {
+        display      : inline-flex;
+        padding-right: 130px;
+    }
+}
+
+.switch {
+    position: absolute;
+    opacity : 0;
+}
+
+.switch-label {
+    position        : absolute;
+    top             : -5px;
+    right           : 0;
+    overflow        : hidden;
+    width           : 87px;
+    height          : 34px;
+    border-radius   : 20px;
+    text-indent     : -9999px;
+    cursor          : pointer;
+    transition      : color 75ms, border-color 75ms;
+    transition-delay: 50ms, 50ms;
+    user-select     : none;
+    z-index         : 1;
+    background      : #c4c4c4;
+
+    @include media-breakpoint-up(lg) {
+        top: -2px;
+    }
+
+    &:before {
+        position      : absolute;
+        top           : 1px;
+        display       : block;
+        overflow      : hidden;
+        width         : 80px;
+        height        : 80px;
+        color         : white;
+        content       : 'Yes\ANo';
+        text-align    : center;
+        text-indent   : 0;
+        text-transform: uppercase;
+        white-space   : pre;
+        font-weight   : bold;
+        font-size     : 16px;
+        font-weight   : 300;
+        letter-spacing: 1px;
+        line-height   : 30px;
+        // background: red;
+
+    }
+
+    &:after {
+        position     : absolute;
+        top          : 2px;
+        left         : 2px;
+        z-index      : -1;
+        width        : 30px;
+        height       : 30px;
+        border-radius: 100%;
+        background   : white;
+        content      : '';
+    }
+
+    &:before,
+    &:after {
+        animation-duration       : 75ms;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: 1;
+        animation-fill-mode      : forwards;
+    }
+}
+
+.switch {
+    ~.switch-label:after {
+        animation-name: slideRight;
+    }
+
+    &:checked {
+        ~.switch-label {
+            background: $blue;
+            color     : white;
+
+            &:after {
+                animation-name: slideLeft;
+            }
+
+            &:before {
+                color         : white;
+                animation-name: onText;
+            }
+        }
+
+
+    }
+
+    ~.switch-label:before {
+        color         : white;
+        animation-name: offText;
+    }
+}
+
+@keyframes slideRight {
+    0% {
+        transform: translateX(30px);
+    }
+
+    10% {
+        transform: translateX(30px) scaleX(1.2) scaleY(0.8);
+    }
+
+    50% {
+        transform: translateX(15px) scaleX(1.45) scaleY(0.65);
+    }
+
+    90% {
+        transform: translateX(0) scaleX(1.2) scaleY(0.8);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideLeft {
+    0% {
+        transform: translateX(0);
+    }
+
+    10% {
+        transform: translateX(0) scaleX(1.2) scaleY(0.8);
+    }
+
+    50% {
+        transform: translateX(15px) scaleX(1.45) scaleY(0.65);
+    }
+
+    90% {
+        transform: translateX(30px) scaleX(1.2) scaleY(0.8);
+    }
+
+    100% {
+        transform: translateX(53px);
+    }
+}
+
+@keyframes onText {
+    0% {
+        opacity  : 0;
+        transform: translateX(11px);
+    }
+
+    50% {
+        opacity  : 1;
+        transform: translateX(0px);
+    }
+
+    100% {
+        top      : 3px;
+        opacity  : 1;
+        transform: translateX(-35px);
+    }
+}
+
+@keyframes offText {
+    0% {
+        opacity  : 0;
+        transform: translateX(-10px);
+    }
+
+    50% {
+        opacity  : 1;
+        transform: translateX(0px);
+    }
+
+    100% {
+        top      : -27px;
+        opacity  : 1;
+        transform: translateX(-10px);
+    }
+}
+
+.custom-radios {
+    &-bunch {
+        border-radius  : 10px;
+        position       : relative;
+        width          : 100%;
+        background     : #E5E7E9;
+        display        : flex;
+        justify-content: center;
+        align-items    : center;
+        padding        : 3px;
+
+        @include media-breakpoint-down(lg) {
+            flex-wrap: wrap;
+
+        }
+
+        @include media-breakpoint-up(lg) {
+            padding: 6px;
+        }
+
+
+        input[type="radio"] {
+            position: absolute;
+            right   : 1000%;
+
+            &:checked+label {
+                color     : white;
+                background: #ff0000;
+            }
+        }
+
+        label {
+            // width        : 143px;
+            height       : 50px;
+            margin       : 0 5px 0 0;
+            padding      : 0;
+            background   : white;
+            border-radius: 5px;
+            cursor       : pointer;
+            text-align   : center;
+            line-height  : 50px;
+            transition   : all 0.3s ease-in;
+
+            @include media-breakpoint-down(lg) {
+                width : calc(50% - 6px);
+                margin: 3px;
+            }
+
+            @include media-breakpoint-up(lg) {
+                flex-grow: 1;
+            }
+
+            &:last-of-type {
+                @include media-breakpoint-up(lg) {
+                    margin-right: 0;
+                }
+            }
+
+            .no-touch &:hover {
+                color     : white;
+                background: #ff0000;
+
+            }
+        }
+    }
+
+    &-buttons {
+        position       : relative;
+        width          : 100%;
+        display        : flex;
+        justify-content: space-between;
+        align-items    : center;
+
+        @include media-breakpoint-down(lg) {
+            flex-wrap : wrap;
+            margin-top: 30px;
+        }
+
+        @include media-breakpoint-up(lg) {
+            padding: 6px;
+        }
+
+        input[type="radio"] {
+            position: absolute;
+            right   : 1000%;
+
+            &:checked+label {
+                color       : white;
+                background  : $blue;
+                border-color: $blue;
+            }
+        }
+
+        label {
+            border       : 1px solid #000;
+            height       : 45px;
+            margin       : 0 5px 0 0;
+            padding      : 0;
+            background   : white;
+            border-radius: 50px;
+            cursor       : pointer;
+            text-align   : center;
+            line-height  : 45px;
+            transition   : all 0.3s ease-in;
+
+            @include media-breakpoint-down(lg) {
+                width : calc(50% - 12px);
+                margin: 3px;
+            }
+
+            @include media-breakpoint-up(lg) {
+                flex-grow   : 1;
+                margin-right: 20px;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+
+            &:last-of-type {
+                @include media-breakpoint-up(lg) {
+                    margin-right: 0;
+                }
+            }
+
+            .no-touch &:hover {
+                color       : white;
+                background  : $blue;
+                border-color: $blue;
+
+            }
+        }
+    }
+}
+
+
+input.form-control[type="date"]:before {
+    color       : #243746;
+    content     : attr(placeholder);
+    margin-right: 20px;
+}
+
+.btn-group-form {
+    display        : flex;
+    justify-content: space-between;
+
+    @include media-breakpoint-up(down) {
+        margin-top: 30px;
+
+        .btn {
+            flex-grow   : 1;
+            text-align  : center;
+            margin-right: 20px;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+
+    @include media-breakpoint-up(lg) {
+        margin-right: 0;
+    }
+}

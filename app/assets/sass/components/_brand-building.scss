@@ -1,0 +1,49 @@
+.brand-building {
+    padding         : 160px 0px;
+    background-color: #131313;
+
+    @include media-breakpoint-down(lg) {
+        padding: 120px 0px;
+    }
+
+    &__card-item {
+        display        : flex;
+        justify-content: center;
+        margin-bottom  : 60px;
+
+        @include media-breakpoint-down(lg) {
+            margin-bottom: 30px;
+
+        }
+
+    }
+
+    &__card {
+        margin-bottom: -60px;
+
+        @include media-breakpoint-down(lg) {
+            margin-bottom: -30px;
+
+        }
+    }
+
+    &__title {
+        color: #fff;
+
+        font-size    : 48px;
+        line-height  : 120%;
+        margin       : auto;
+        margin-bottom: 80px;
+        text-align   : center;
+        font-style   : normal;
+        font-weight  : 400;
+
+        @include media-breakpoint-down(lg) {
+            font-size  : 30px;
+            line-height: 120%;
+            width      : 100%;
+            max-width  : 345px;
+        }
+    }
+
+}

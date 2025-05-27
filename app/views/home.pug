@@ -1,15 +1,27 @@
 extends layouts/layout.pug
 
 block pageTitle
-	- var title_en="TAF | Home"
+	- var title_en=" | Home"
 	- var desc_en=""
-	- var title_ar="TAF | Home"
+	- var title_ar=""
 	- var desc_ar=''
 	- var link_en=""
 	- var link_ar=""
 
 block content
-	include includes/components/_spotlight.pug
-	include includes/components/_discover.pug
-	include includes/components/_dummy.pug
-	include includes/components/_test.pug
+	include layouts/header/main-nav.pug
+	include includes/home/_spotlight.pug
+	include layouts/header/header.pug
+
+	include includes/components/_statement.pug
+	include includes/components/_who-we-are.pug
+	include includes/components/_operating-principles.pug
+	include includes/components/_governance.pug
+	include includes/components/_leadership.pug
+	include includes/components/_real-estate.pug
+	include includes/components/_values.pug
+	include includes/components/_strategy.pug
+	include includes/components/_work-with-purpose.pug
+	include includes/components/_collaborate-with-us.pug
+
+

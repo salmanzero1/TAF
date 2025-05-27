@@ -1,12 +1,13 @@
 @use "sass:math";
 
-$base-font-size: 16;
-
 @function px($value) {
 	$result: 0;
-	$result: calc($value/$base-font-size) + rem;
+	$result: calc(($value/16) + rem);
 	@return $result;
 }
+
+
+
 
 @mixin clearfix() {
 	&::after {
@@ -14,6 +15,12 @@ $base-font-size: 16;
 		content: "";
 		clear  : both;
 	}
+}
+
+@mixin gradient() {
+
+	background: linear-gradient(#ec0148 0%, #e10254 10%, #d60460 20%, #cc056c 30%, #c10778 40%, #b60884 50%, #ab0a8f 60%, #a00b9b 70%, #960da7 80%, #8b0eb3 90%, #8010bf 100%);
+
 }
 
 @mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white, 50%)) {
@@ -46,7 +53,7 @@ $base-font-size: 16;
 
 @mixin font($size, $lineheight, $weight) {
 	font-size  : px($size);
-	line-height: $lineheight;
+	line-height: px($lineheight);
 	font-weight: $weight;
 }
 
@@ -70,12 +77,28 @@ $base-font-size: 16;
 }
 
 $grid-breakpoints: (xs: 0,
-	sm: 640px,
+	sm: 576px,
 	md: 768px,
-	lg: 1024px,
-	xl: 1280px);
+	lg: 992px,
+	xl: 1200px,
+	xxl: 1400px);
 
+// Breakpoint viewport sizes and media queries.
+//
+// Breakpoints are defined as a map of (name: minimum width), order from small to large:
+//
+//    (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px)
+//
+// The map defined in the `$grid-breakpoints` global variable is used as the `$breakpoints` argument by default.
 
+// Name of the next breakpoint, or null for the last breakpoint.
+//
+//    >> breakpoint-next(sm)
+//    md
+//    >> breakpoint-next(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    md
+//    >> breakpoint-next(sm, $breakpoint-names: (xs sm md lg xl))
+//    md
 @function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
 	$n: index($breakpoint-names, $name);
 
@@ -86,20 +109,42 @@ $grid-breakpoints: (xs: 0,
 	@return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
 }
 
+// Minimum breakpoint width. Null for the smallest (first) breakpoint.
+//
+//    >> breakpoint-min(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    576px
 @function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
 	$min: map-get($breakpoints, $name);
 	@return if($min !=0, $min, null);
 }
 
+// Maximum breakpoint width.
+// The maximum value is reduced by 0.02px to work around the limitations of
+// `min-` and `max-` prefixes and viewports with fractional widths.
+// See https://www.w3.org/TR/mediaqueries-4/#mq-min-max
+// Uses 0.02px rather than 0.01px to work around a current rounding bug in Safari.
+// See https://bugs.webkit.org/show_bug.cgi?id=178261
+//
+//    >> breakpoint-max(md, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    767.98px
 @function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
 	$max: map-get($breakpoints, $name);
 	@return if($max and $max > 0, $max - .02, null);
 }
 
+// Returns a blank string if smallest breakpoint, otherwise returns the name with a dash in front.
+// Useful for making responsive utilities.
+//
+//    >> breakpoint-infix(xs, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    ""  (Returns a blank string)
+//    >> breakpoint-infix(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    "-sm"
 @function breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
 	@return if(breakpoint-min($name, $breakpoints)==null, "", "-#{$name}");
 }
 
+// Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
+// Makes the @content apply to the given breakpoint and wider.
 @mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
 	$min: breakpoint-min($name, $breakpoints);
 
@@ -114,6 +159,8 @@ $grid-breakpoints: (xs: 0,
 	}
 }
 
+// Media of at most the maximum breakpoint width. No query for the largest breakpoint.
+// Makes the @content apply to the given breakpoint and narrower.
 @mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
 	$max: breakpoint-max($name, $breakpoints);
 
@@ -128,6 +175,8 @@ $grid-breakpoints: (xs: 0,
 	}
 }
 
+// Media that spans multiple breakpoint widths.
+// Makes the @content apply between the min and max breakpoints
 @mixin media-breakpoint-between($lower, $upper, $breakpoints: $grid-breakpoints) {
 	$min: breakpoint-min($lower, $breakpoints);
 	$max: breakpoint-max($upper, $breakpoints);
@@ -151,6 +200,9 @@ $grid-breakpoints: (xs: 0,
 	}
 }
 
+// Media between the breakpoint's minimum and maximum widths.
+// No minimum for the smallest breakpoint, and no maximum for the largest one.
+// Makes the @content apply only to the given breakpoint, not viewports any wider or narrower.
 @mixin media-breakpoint-only($name, $breakpoints: $grid-breakpoints) {
 	$min : breakpoint-min($name, $breakpoints);
 	$next: breakpoint-next($name, $breakpoints);
@@ -171,6 +223,176 @@ $grid-breakpoints: (xs: 0,
 	@else if $min==null {
 		@include media-breakpoint-down($next, $breakpoints) {
 			@content;
+		}
+	}
+}
+
+
+$spaceamounts: (0,
+	5,
+	6,
+	8,
+	9,
+	10,
+	12,
+	14,
+	15,
+	16,
+	17,
+	18,
+	20,
+	23,
+	24,
+	25,
+	26,
+	30,
+	32,
+	34,
+	35,
+	38,
+	39,
+	40,
+	45,
+	47,
+	48,
+	50,
+	54,
+	55,
+	56,
+	59,
+	60,
+	62,
+	64,
+	65,
+	68,
+	70,
+	74,
+	75,
+	77,
+	80,
+	83,
+	85,
+	88,
+	90,
+	95,
+	93,
+	94,
+	96,
+	100,
+	108,
+	110,
+	118,
+	120,
+	122,
+	130,
+	140,
+	150,
+	168,
+	180,
+	197,
+	200,
+	248,
+	// 250,
+	// 300,
+	// 350,
+	// 400,
+	// 450,
+	// 500
+); // Adjust this to include the pixel amounts you need.
+$sides: (top, bottom, left, right); // Leave this variable alone
+
+@each $space in $spaceamounts {
+	@each $side in $sides {
+		.m#{str-slice($side, 0, 1)}-#{$space} {
+			margin-#{$side}: #{$space}px !important;
+		}
+
+		.p#{str-slice($side, 0, 1)}-#{$space} {
+			padding-#{$side}: #{$space}px !important;
+		}
+	}
+}
+
+@include media-breakpoint-up(sm) {
+	@each $space in $spaceamounts {
+		@each $side in $sides {
+			.m#{str-slice($side, 0, 1)}-sm-#{$space} {
+				margin-#{$side}: #{$space}px !important;
+			}
+
+			.p#{str-slice($side, 0, 1)}-sm-#{$space} {
+				padding-#{$side}: #{$space}px !important;
+			}
+		}
+	}
+}
+
+@include media-breakpoint-up(md) {
+	@each $space in $spaceamounts {
+		@each $side in $sides {
+			.m#{str-slice($side, 0, 1)}-md-#{$space} {
+				margin-#{$side}: #{$space}px !important;
+			}
+
+			.p#{str-slice($side, 0, 1)}-md-#{$space} {
+				padding-#{$side}: #{$space}px !important;
+			}
+		}
+	}
+}
+
+@include media-breakpoint-up(lg) {
+	@each $space in $spaceamounts {
+		@each $side in $sides {
+			.m#{str-slice($side, 0, 1)}-lg-#{$space} {
+				margin-#{$side}: #{$space}px !important;
+			}
+
+			.p#{str-slice($side, 0, 1)}-lg-#{$space} {
+				padding-#{$side}: #{$space}px !important;
+			}
+		}
+	}
+}
+
+@include media-breakpoint-up(xl) {
+	@each $space in $spaceamounts {
+		@each $side in $sides {
+			.m#{str-slice($side, 0, 1)}-xl-#{$space} {
+				margin-#{$side}: #{$space}px !important;
+			}
+
+			.p#{str-slice($side, 0, 1)}-xl-#{$space} {
+				padding-#{$side}: #{$space}px !important;
+			}
+		}
+	}
+}
+
+@include media-breakpoint-up(xxl) {
+	@each $space in $spaceamounts {
+		@each $side in $sides {
+			.m#{str-slice($side, 0, 1)}-xxl-#{$space} {
+				margin-#{$side}: #{$space}px !important;
+			}
+
+			.p#{str-slice($side, 0, 1)}-xxl-#{$space} {
+				padding-#{$side}: #{$space}px !important;
+			}
+		}
+	}
+}
+
+@include media-breakpoint-up(xxxl) {
+	@each $space in $spaceamounts {
+		@each $side in $sides {
+			.m#{str-slice($side, 0, 1)}-xxxl-#{$space} {
+				margin-#{$side}: #{$space}px !important;
+			}
+
+			.p#{str-slice($side, 0, 1)}-xxxl-#{$space} {
+				padding-#{$side}: #{$space}px !important;
+			}
 		}
 	}
 }

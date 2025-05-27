@@ -1,0 +1,15 @@
+script(src="../assets/js/intlTelInput/intlTelInput.min.js")
+script.
+
+	var phone = document.querySelector("#phone");
+
+	var init = window.intlTelInput(phone, {
+		utilsScript: "../assets/js/lib/intlTelInput/utils.js",
+		//- autoHideDialCode:false,
+		nationalMode:false,
+		autoPlaceholder: "aggressive",
+		initialCountry: "ae",
+		separateDialCode: true,
+		preferredCountries: ["ae"],
+		//- excludeCountries: ["tw"]
+	});

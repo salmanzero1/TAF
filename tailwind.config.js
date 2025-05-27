@@ -1,18 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	content: ["./app/views/**/*.{js,pug}"],
+	content: ["./app/views/**/*.{pug,js}"],
 	theme: {
-		extend: {
-			rotate: {
-				'y-180': 'rotateY(180deg)',
-			}
-		},
-		container: {
-			center: true,
-		},
+		extend: {},
 	},
-	safelist: [
-		'w-[28px]', '!w-[28px]', '!rounded-[8px]', '!mx-[2px]'
-	],
 	plugins: [],
-};
+}
