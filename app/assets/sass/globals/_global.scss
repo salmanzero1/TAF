@@ -126,7 +126,31 @@ input::-ms-clear {
 	}
 }
 
+.font {
+	&-black {
+		color: $black;
+	}
 
+	&-white {
+		color: $white;
+	}
+
+	&-blue {
+		color: $blue;
+	}
+
+	&-dark-grey {
+		color: $dark-grey;
+	}
+
+	&-light-grey {
+		color: $light-grey;
+	}
+
+	&-off-white {
+		color: $off-white;
+	}
+}
 
 .ttu {
 	text-transform: uppercase;
@@ -191,16 +215,61 @@ input::-ms-clear {
 	}
 }
 
+.section {
+	overflow: hidden;
+	padding : 100px 0;
 
-
-@media (min-width: 1500px) {
-
-	.container-xxl,
-	.container-xl,
-	.container-lg,
-	.container-md,
-	.container-sm,
-	.container {
-		max-width: 1440px;
+	@include media-breakpoint-up(lg) {
+		padding: 160px 0;
 	}
 }
+
+.line {
+	position      : relative;
+	padding-bottom: 24px;
+
+	@include media-breakpoint-up(lg) {
+		padding-bottom: 34px;
+	}
+
+	&::after {
+		content         : "";
+		position        : absolute;
+		bottom          : 0;
+		left            : 0;
+		width           : 27px;
+		height          : 2px;
+		background-color: white;
+	}
+
+	&.center {
+		&::after {
+			@include media-breakpoint-down(lg) {
+				left     : 50%;
+				transform: translateX(-50%);
+			}
+		}
+	}
+}
+
+.image-text {
+	background             : url('../images/taf-image-text.png') center/cover no-repeat;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip        : text;
+	color                  : transparent;
+}
+
+
+
+// @media (min-width: 1500px) {
+
+// 	.container-xxl,
+// 	.container-xl,
+// 	.container-lg,
+// 	.container-md,
+// 	.container-sm,
+// 	.container {
+// 		max-width: 1440px;
+// 	}
+// }

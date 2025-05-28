@@ -1,24 +1,9 @@
-section.partnering#partners
-    .partnering__wrapper
-        h2.partnering__title
-                span Partnering 
-                | with platforms that influence culture
-                 
-        .partnering__slider 
-            .swiper-wrapper
-                .swiper-slide
-                    +img("partnering/Meta.svg", '', 'partnering__logo', false)
-                .swiper-slide
-                    +img("partnering/google.svg", '', 'partnering__logo', false)
-                .swiper-slide
-                    +img("partnering/yt.svg", '', 'partnering__logo', false)
-                .swiper-slide
-                    +img("partnering/tiktok.svg", '', 'partnering__logo', false)
-                .swiper-slide
-                    +img("partnering/linkedin.svg", '', 'partnering__logo', false)
-                .swiper-slide
-                    +img("partnering/snapchat.svg", '', 'partnering__logo', false)
-                .swiper-slide
-                    +img("partnering/instagram.svg", '', 'partnering__logo', false)
-                .swiper-slide
-                    +img("partnering/x-twit.svg", '', 'partnering__logo', false)
+section.section.bg-off-white#partners
+    .container
+        .row
+            div(class="flex flex-col justify-between items-center text-center")
+                +heading("A structure, not a personality.", "h5", "mb-24")
+                +heading("Registered as a foundation under DIFC law, TAF is governed by legal and structural discipline - separating decision making from personality and pressure.", "h2", "mb-40")
+                +heading("The Family Office oversees execution with clarity, accountability, and intent.", "h5", "font-light-grey m-0")
+            div(class="flex flex-col mt-40 mt-lg-80")
+                +img("/taf-governance-image.jpg", "Operating Principles", "w-full max-h-[526px] min-h-[400px] object-cover", false)

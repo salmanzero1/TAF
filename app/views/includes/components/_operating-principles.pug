@@ -1,42 +1,33 @@
-section.brutally.no-header#services
+-
+    var principles = [
+        {
+            title: "We move when it is right, not when it is fast"
+        },
+        {
+            title: "We act only when conviction is clear"
+        },
+        {
+            title: "We pursue alignment before scale"
+        },
+        {
+            title: "We design for longevity, not leverage"
+        },
+        {
+            title: "We build in silence, but with substance"
+        },
+    ]
+
+
+section.section.bg-blue.text-white#services
     .container
-        .row.justify-content-between
-            .col-12.col-lg-3
-                 +img("card-img.svg", '', 'brutally__logo', false)
-            .col-12.col-lg-4
-                h4.brutally__desc On-demand brand storytelling and  performance-driven campaign faster and  more reliably than any traditional agency.
-            .col-12.col-lg-3
-                ul.brutally__bullet-point
-                    li Brand Storytelling
-                    li Campaign Concepting
-                    li Social Content Creation
-                    li Creative Strategy
-                    li Integrated Campaign Development
-        .row.justify-content-between
-            .col-12.col-lg-3
-                 +img("brutally-fast.svg", '', 'brutally__logo', false)
-            .col-12.col-lg-4
-                h4.brutally__desc Ultra-fast creative subscriptions turning projects around in as little as 12 hours wit AI-driven automation.
-
-            .col-12.col-lg-3
-                ul.brutally__bullet-point
-                    li Rapid Creative Adaptation
-                    li Real-Time Creative Updates
-                    li Lightning-Fast Asset Production
-                    li Express Campaign Rollouts
-                    li Subscription-Based Creative Support
-        .row.justify-content-between
-            .col-12.col-lg-3
-                 +img("brutally-effective.svg", '', 'brutally__logo', false)
-            .col-12.col-lg-4
-                h4.brutally__desc High-performance campaigns a speed, combining best creative talent with AI to  maximize impact and efficiency.
-
-            .col-12.col-lg-3
-                ul.brutally__bullet-point
-                    li Performance-Driven Ad Design
-                    li A/B Testing and Optimization
-                    li High-Velocity Content Production
-                    li Full-Service Creative Management
-                    li AI-Enhanced Creative Analytics
-
-
+        .row
+            div(class="flex flex-col justify-between items-center text-center !max-w-[800px] m-auto")
+                +heading("Principles before opportunity.", "h5", "mb-24")
+                +heading("Our principles are not values on a wall. They are operational decisions:", "h2", "m-0")
+            div(class="mt-40 mt-lg-80 grid grid-cols-8 lg:grid-cols-12 space-y-10 lg:space-y-0")
+                div(class="flex flex-col justify-between col-span-8 lg:col-span-6")
+                    +img("/taf-about-image.jpg", "Operating Principles", "w-full h-full object-cover", false)
+                div(class="flex flex-col col-span-8 lg:col-span-5 lg:col-start-8 gap-10 lg:gap-[48px] justify-center")
+                    each principle in principles
+                        .line.pb-24
+                            +heading(principle.title, "h5", "h5--400 m-0")

@@ -1,188 +1,188 @@
-.growing-ventures {
-    padding: 160px 0px;
+// .growing-ventures {
+//     padding: 160px 0px;
 
-    @include media-breakpoint-down(lg) {
-        padding: 120px 0px;
+//     @include media-breakpoint-down(lg) {
+//         padding: 120px 0px;
 
-    }
-
-
-    &__title {
-        color: #141414;
-
-        font-size    : 48px;
-        line-height  : 120%;
-        margin       : auto;
-        margin-bottom: 40px;
-        text-align   : center;
-
-        @include media-breakpoint-down(lg) {
-            font-size  : 30px;
-            line-height: 110%;
-            width      : 100%;
-        }
-
-        @include media-breakpoint-down(lg) {
-            width: 100%;
-            width: 264px;
-        }
+//     }
 
 
-        span {
-            color: #2000FF;
+//     &__title {
+//         color: #141414;
 
-        }
-    }
+//         font-size    : 48px;
+//         line-height  : 120%;
+//         margin       : auto;
+//         margin-bottom: 40px;
+//         text-align   : center;
 
-    &__desc {
-        color     : #131313;
-        text-align: center;
+//         @include media-breakpoint-down(lg) {
+//             font-size  : 30px;
+//             line-height: 110%;
+//             width      : 100%;
+//         }
 
-        font-size  : 21px;
-        font-style : normal;
-        font-weight: 300;
-        line-height: 130%;
-        margin     : auto;
-        /* 27.3px */
-
-        @include media-breakpoint-up(lg) {
-            // max-width: 67%;
-            margin-bottom: 16px;
-
-
-        }
-
-        @include media-breakpoint-down(lg) {
-            margin-bottom: 24px;
-            font-size    : 18px;
-            max-width    : 337px;
-
-            br {
-                display: none;
-            }
-
-            &:last-child {
-                margin-bottom: 0px;
-            }
-        }
-
-        @include media-breakpoint-down(md) {
-            width    : 100%;
-            max-width: 342px;
-
-        }
-
-    }
-
-    &__cards {
-        @include media-breakpoint-down(md) {
-            max-width    : 390px;
-            margin       : auto;
-            padding-left : 20px;
-            padding-right: 20px;
-        }
-
-    }
-
-    &__logo {
-        height: 100%;
-
-        @include media-breakpoint-down(md) {
-            width: 100%;
-        }
-    }
-
-    &__card {
-        margin-top: 80px;
-
-        @include media-breakpoint-down(lg) {
-            margin-top: 64px;
-        }
-    }
-
-    &__card-item {
-        height: 55px;
-
-        @include media-breakpoint-up(lg) {
-            display        : flex;
-            justify-content: center;
-            flex-flow      : column;
-            text-align     : center;
-        }
-
-        @include media-breakpoint-down(md) {
-            align-content: center;
-
-        }
-
-        img {
-            width        : fit-content;
-            margin-bottom: 8px;
-
-            @include media-breakpoint-up(md) {
-                margin: auto;
-            }
-        }
-
-        p {
-            color        : #141414;
-            margin-bottom: 0px;
-        }
-
-        @include media-breakpoint-down(md) {
-            &.platformance {
-                img {
-                    width : 184.801px;
-                    height: 38px;
-                }
-            }
-
-            &.matte {
-                img {
-                    width : 118.136px;
-                    height: 20px;
-                    margin: auto 0px auto auto;
-                }
-            }
-
-            &.cloutscout {
-                img {
-                    width : 132.571px;
-                    height: 20px;
-
-                }
-            }
-
-            &.zero {
-                img {
-                    width : 92px;
-                    height: 58px;
-                    margin: 20px auto auto 0px;
-                }
-            }
-
-            &.calibrate {
-                width : 104px;
-                height: 35px;
-                margin: auto 10px auto auto;
-            }
-        }
-    }
+//         @include media-breakpoint-down(lg) {
+//             width: 100%;
+//             width: 264px;
+//         }
 
 
-    &__mail,
-    a {
-        color          : #131313;
-        font-size      : 18px;
-        text-decoration: none;
-        text-align     : center;
-        font-weight    : 700;
-    }
+//         span {
+//             color: #2000FF;
 
-    .row {
-        .col-6 {
-            align-self: center;
-        }
-    }
+//         }
+//     }
 
-}
+//     &__desc {
+//         color     : #131313;
+//         text-align: center;
+
+//         font-size  : 21px;
+//         font-style : normal;
+//         font-weight: 300;
+//         line-height: 130%;
+//         margin     : auto;
+//         /* 27.3px */
+
+//         @include media-breakpoint-up(lg) {
+//             // max-width: 67%;
+//             margin-bottom: 16px;
+
+
+//         }
+
+//         @include media-breakpoint-down(lg) {
+//             margin-bottom: 24px;
+//             font-size    : 18px;
+//             max-width    : 337px;
+
+//             br {
+//                 display: none;
+//             }
+
+//             &:last-child {
+//                 margin-bottom: 0px;
+//             }
+//         }
+
+//         @include media-breakpoint-down(md) {
+//             width    : 100%;
+//             max-width: 342px;
+
+//         }
+
+//     }
+
+//     &__cards {
+//         @include media-breakpoint-down(md) {
+//             max-width    : 390px;
+//             margin       : auto;
+//             padding-left : 20px;
+//             padding-right: 20px;
+//         }
+
+//     }
+
+//     &__logo {
+//         height: 100%;
+
+//         @include media-breakpoint-down(md) {
+//             width: 100%;
+//         }
+//     }
+
+//     &__card {
+//         margin-top: 80px;
+
+//         @include media-breakpoint-down(lg) {
+//             margin-top: 64px;
+//         }
+//     }
+
+//     &__card-item {
+//         height: 55px;
+
+//         @include media-breakpoint-up(lg) {
+//             display        : flex;
+//             justify-content: center;
+//             flex-flow      : column;
+//             text-align     : center;
+//         }
+
+//         @include media-breakpoint-down(md) {
+//             align-content: center;
+
+//         }
+
+//         img {
+//             width        : fit-content;
+//             margin-bottom: 8px;
+
+//             @include media-breakpoint-up(md) {
+//                 margin: auto;
+//             }
+//         }
+
+//         p {
+//             color        : #141414;
+//             margin-bottom: 0px;
+//         }
+
+//         @include media-breakpoint-down(md) {
+//             &.platformance {
+//                 img {
+//                     width : 184.801px;
+//                     height: 38px;
+//                 }
+//             }
+
+//             &.matte {
+//                 img {
+//                     width : 118.136px;
+//                     height: 20px;
+//                     margin: auto 0px auto auto;
+//                 }
+//             }
+
+//             &.cloutscout {
+//                 img {
+//                     width : 132.571px;
+//                     height: 20px;
+
+//                 }
+//             }
+
+//             &.zero {
+//                 img {
+//                     width : 92px;
+//                     height: 58px;
+//                     margin: 20px auto auto 0px;
+//                 }
+//             }
+
+//             &.calibrate {
+//                 width : 104px;
+//                 height: 35px;
+//                 margin: auto 10px auto auto;
+//             }
+//         }
+//     }
+
+
+//     &__mail,
+//     a {
+//         color          : #131313;
+//         font-size      : 18px;
+//         text-decoration: none;
+//         text-align     : center;
+//         font-weight    : 700;
+//     }
+
+//     .row {
+//         .col-6 {
+//             align-self: center;
+//         }
+//     }
+
+// }

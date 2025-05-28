@@ -30,6 +30,12 @@ mixin dualImg(srcDesktop,srcMob,alt,cssClass='',lazy = true)
 mixin linkButton(href,text,cssClass='')
 	a(href=href title=text class=`btn ${cssClass}`)=text
 
+mixin heading(title, headingTag, cssClass)
+	#{headingTag}(class=cssClass) !{title}
+
+mixin paragraph(text, cssClass)
+	p(class=cssClass) !{text}
+
 mixin textButton(href,text,cssClass='')
 	a(href=href title=text class=`link ${cssClass}`)=text
 

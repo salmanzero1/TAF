@@ -69,12 +69,18 @@ $base-font-size: 16;
 	position : absolute;
 }
 
-$grid-breakpoints: (xs: 0,
-	sm: 576px,
+$grid-breakpoints: ( // xs: 0,
+	// sm: 576px,
+	// md: 768px,
+	// lg: 992px,
+	// xl: 1200px,
+	// xxl: 1400px);
+	xs: 0,
+	sm: 640px,
 	md: 768px,
-	lg: 992px,
-	xl: 1200px,
-	xxl: 1400px);
+	lg: 1024px,
+	xl: 1280px,
+	xxl: 1536px);
 
 
 @function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
