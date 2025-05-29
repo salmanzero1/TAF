@@ -28,6 +28,7 @@ body {
 
 a {
 	text-decoration: none;
+	color          : $dark-grey;
 }
 
 a:hover {
@@ -213,6 +214,12 @@ input::-ms-clear {
 		position: relative;
 		z-index : 0;
 	}
+
+	// &-golden {
+	// 	&::after {
+	// 		background: #DFC89ACC;
+	// 	}
+	// }
 }
 
 .section {
@@ -228,9 +235,9 @@ input::-ms-clear {
 	position      : relative;
 	padding-bottom: 24px;
 
-	@include media-breakpoint-up(lg) {
-		padding-bottom: 34px;
-	}
+	// @include media-breakpoint-up(lg) {
+	// 	padding-bottom: 34px;
+	// }
 
 	&::after {
 		content         : "";
@@ -242,12 +249,18 @@ input::-ms-clear {
 		background-color: white;
 	}
 
-	&.center {
+	&.line-center {
 		&::after {
 			@include media-breakpoint-down(lg) {
 				left     : 50%;
 				transform: translateX(-50%);
 			}
+		}
+	}
+
+	&.line-image {
+		&::after {
+			background: url('../images/taf-image-text.png') center/cover no-repeat;
 		}
 	}
 }
@@ -260,7 +273,26 @@ input::-ms-clear {
 	color                  : transparent;
 }
 
+.disabled {
+	opacity: 0.5;
+	cursor : default;
+}
 
+.swiper-button-next,
+.swiper-button-prev {
+	width        : 40px;
+	height       : 40px;
+	background   : #F5F5F5;
+	border-radius: 12px;
+
+	.material-symbols-outlined {
+		color: $dark-grey;
+	}
+}
+
+.swiper-button-next {}
+
+.swiper-button-prev {}
 
 // @media (min-width: 1500px) {
 

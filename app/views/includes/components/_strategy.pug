@@ -1,10 +1,10 @@
 section.section.bg-dark-grey.text-white#about
-    .container
-        .row
-            div(class="grid grid-cols-8 lg:grid-cols-12 space-y-10 lg:space-y-0")
-                div(class="flex flex-col justify-between col-span-8 lg:col-span-6")
-                    +img("/taf-about-image.jpg", "Operating Principles", "w-full h-full object-cover", false)
-                div(class="flex flex-col col-span-8 lg:col-span-5 lg:col-start-8 gap-10 lg:gap-[48px] justify-center")
-                    +heading("Founded in the UAE. Structured for its future.", "h5", "h5--400 m-0")
-                    +heading("Our approach reflects the ambition and contribution of the place we call home.", "h2", "mb-24")
-                    +heading("We build with cultural awareness and strategic care for what matters, and what lasts.", "h5", "m-0 opacity-50")
+  .container
+    .row
+      div(class="grid grid-cols-8 lg:grid-cols-12 space-y-10 lg:space-y-0")
+        div(class="flex flex-col col-span-8 lg:col-span-5 lg:col-start-8 gap-10 lg:gap-[48px] justify-center lg:order-2")
+          +heading("Founded in the UAE. Structured for its future.", "h5", "!font-normal m-0")
+          +heading("Our approach reflects the ambition and contribution of the place we call home.", "h2", "mb-24")
+          +heading("We build with cultural awareness and strategic care for what matters, and what lasts.", "h5", "m-0 opacity-50")
+        div(class="flex flex-col justify-between col-span-8 lg:col-span-6 lg:order-1 mask relative")
+          +img("/taf-about-image.jpg", "Operating Principles", "w-full h-full object-cover", false)

@@ -1,8 +1,12 @@
-section.background-noise.no-header
-    .background-noise__wrapper
-        .background-noise__wrapper-img
-            +dualImg("noise-bg.png",'noise-bg-mob.png', '' ,'', false)
-        .background-noise__wrapper-cont
-            h2.background-noise__title “So don’t become, some Background Noise.”
-            p.background-noise__desc "Radio Ga Ga" Freddie Mercury, 1984
+section.section.bg-off-white#partners
+  .container
 
+    div(class="flex flex-col !w-full !max-w-[820px]")
+      +heading("You don’t work for this structure. You work with it.", "h5", "mb-24")
+      +heading("If you think in decades, and act with care, we invite you to express interest.", "h2", "m-0")
+    div(class="grid grid-cols-12 gap-2 md:gap-6 mt-40 mt-lg-50")
+      div(class="col-span-12 md:col-span-6 md:col-start-7")
+        +heading("Legal, capital, operations, design, governance - if your expertise aligns, we’re listening.", "h4", "h4 !font-normal mb-24 opacity-50")
+        +link("mailto:careers@tariqalfuttaim.ae","careers@tariqalfuttaim.ae","")
+    div(class="flex flex-col mt-40 mt-lg-80")
+      +img("/taf-image-work.jpg", "work with purpose", "w-full max-h-[564px] min-h-[400px] object-cover", false)

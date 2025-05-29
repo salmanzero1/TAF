@@ -27,6 +27,9 @@ mixin dualImg(srcDesktop,srcMob,alt,cssClass='',lazy = true)
 			source(media='(min-width:575px)' srcset=`${paths.img}/${srcDesktop}`)
 			img(src=`${paths.img}/${srcMob}`, alt=alt class=cssClass)
 
+mixin link(href,text,cssClass='')
+	a(href=href title=text class=`link ${cssClass}`)=text
+
 mixin linkButton(href,text,cssClass='')
 	a(href=href title=text class=`btn ${cssClass}`)=text
 

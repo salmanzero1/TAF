@@ -120,9 +120,94 @@
 			});
 		},
 		
-		swiper: function () {
+		// swiper: function () {
+		// 	const discoverSwiper = new Swiper('.discover-card', {
+		// 		slidesPerView: "auto",
+		// 		// freeMode: true,
+		// 		spaceBetween: 16,
+		// 		// pagination: {
+		// 		// 	el: ".swiper-discover-pagination",
+		// 		// 	clickable: true,
+		// 		// },
+		// 	});
 
+		// 	const nextButtons = document.querySelectorAll('.btn-sm-next, .btn-lg-next');
+		// 	const prevButtons = document.querySelectorAll('.btn-sm-prev, .btn-lg-prev');
+
+		// 	nextButtons.forEach(btn =>
+		// 		btn.addEventListener('click', () => {
+		// 			discoverSwiper.slideNext();
+		// 		})
+		// 	);
+		// 	prevButtons.forEach(btn =>
+		// 		btn.addEventListener('click', () => {
+		// 			discoverSwiper.slidePrev();
+		// 		})
+		// 	);
+		// },
+
+		swiper: function () {
+			const swiperSelector = '.swiper-leadership';
+			const nextButtonSelector = '.btn-next';
+			const prevButtonSelector = '.btn-prev';
+
+			if (typeof Swiper !== 'function' || !document.querySelector(swiperSelector)) {
+				return;
+			}
+
+			const nextButtons = document.querySelectorAll(nextButtonSelector);
+			const prevButtons = document.querySelectorAll(prevButtonSelector);
+
+			const updateNavButtons = (swiper) => {
+				const isBeginning = swiper.isBeginning;
+				const isEnd = swiper.isEnd;
+
+				prevButtons.forEach(btn => {
+					if (isBeginning) {
+						btn.classList.add('disabled');
+					} else {
+						btn.classList.remove('disabled');
+					}
+				});
+
+				nextButtons.forEach(btn => {
+					if (isEnd) {
+						btn.classList.add('disabled');
+					} else {
+						btn.classList.remove('disabled');
+					}
+				});
+			};
+
+			const swiperLeadership = new Swiper(swiperSelector, {
+				slidesPerView: 'auto',
+				spaceBetween: 16,
+				on: {
+					init: function () {
+						updateNavButtons(this);
+					},
+					slideChange: function () {
+						updateNavButtons(this);
+					},
+				}
+			});
+
+			const addButtonListeners = (buttons, action) => {
+				buttons.forEach(btn => {
+					if (btn) {
+						btn.addEventListener('click', () => {
+							if (action === 'next') swiperLeadership.slideNext();
+							else if (action === 'prev') swiperLeadership.slidePrev();
+						});
+					}
+				});
+			};
+
+			addButtonListeners(nextButtons, 'next');
+			addButtonListeners(prevButtons, 'prev');
 		},
+
+
 
 		tabs() {
 

@@ -1,52 +1,20 @@
-footer.footer.bg-dark.text-white
+footer(class="pt-[80px] pb-[120px] pb-lg-80").bg-blue.text-white
   .container
-    .row.justify-content-between
-      // Headquarters and Other Locations Combined Section
-      .col-6.col-md-5.col-sm-6
-        // Headquarters Section
-        h5.footer__head Headquarters
-        a.underline-none(href="https://maps.app.goo.gl/knDk5c1L9P7K4DvRA?g_st=ic" target="_blank")
-          p.footer__desc-small 202 @ Emmay Tower <br /> Internet City, Dubai
-        // Other Locations Section
-        h5.footer__head.space-top-24 Other Locations 
-        p.footer__desc-small Riyadh, Saudi Arabia
-        p.footer__desc-small Cairo, Egypt
-        p.footer__desc-small Karachi, Pakistan
-        p.footer__desc-small Amman, Jordan
-
-      // Say Hi Section
-      .col-5.col-md-3.col-sm-6
-        h5.footer__head Say Hi
-        p.footer__desc.mb-10 Get In Touch
-        a.footer__desc(href="mailto:info@lion.io") info@lion.io
-
-      // Social Section
-      .col-12.col-md-4.col-sm-6
-        h5.footer__head.space-top-mob Social
-        p.footer__desc.mb-0 You can always find us on social.
-        ul.list-inline.social-icons
-          li.list-inline-item
-            a(href="https://www.linkedin.com/company/thelioncreative/" target="_blank") 
-              +img("linkedIn.svg", 'Logo', '', false)
-          //- li.list-inline-item
-          //-   a(href="javascript:void(0)")
-          //-     +img("twitter.svg", 'Logo', '', false)
-          li.list-inline-item
-            a(href="https://www.instagram.com/lionads_official?igsh=NTlvN2NuNmx2bHBw&utm_source=qr" target="_blank") 
-              +img("instgram.svg", 'Logo', '', false)
-      
-    // Bottom Row for Logo and Copyright
-    .row.align-items-center.bottom-footer
-      .col-12.col-md-5.footer-logo
-        a(href="home.html")
-          +img("lion-logo.svg", 'Logo', '', false)
-      .col-12.col-md-6.text-md-right
-        p.footer__desc-small ©2024 LION. All Rights Reserved.
-        .footer__dual-link
-            a.footer__desc-small.text-white(href="#") Privacy
-            a.footer__desc-small.text-white(href="#") Terms & Conditions
     .row
-      .col-12
-        hr.diveder
-    .row.col-12
-    p.footer__copywrite LION is a Fast Ventures company.
+      div(class="grid grid-cols-12 gap-y-[80px] lg:gap-x-6")
+        div(class="col-span-12 lg:col-span-2 lg:order-3 lg:flex lg:justify-end lg:items-start")
+          +img("taf-logo.svg", 'Logo', 'w-[126px]', false)
+
+        div(class="col-span-12 lg:col-span-4 line lg:order-1")
+          +heading("Founded here. Felt everywhere.", "h2", "!font-normal m-0")
+
+        div(class="col-span-12 lg:col-span-4 flex flex-col gap-y-5 lg:order-2 lg:col-start-7")
+          +paragraph("Registered Foundation – Dubai International Financial Centre","text-sm m-0")
+          div(class="flex gap-4")
+            a(class="text-white text-sm" href="#") Privacy Policy
+            a(class="text-white text-sm" href="#") Terms of Use
+          +paragraph("© Tariq Al Futtaim. All rights reserved.","text-sm opacity-50 m-0")
+          ul(class="flex gap-2 p-0 m-0")
+            li
+              a(href="https://www.linkedin.com" target="_blank") 
+                +img("taf-linkedIn.svg", 'Logo', '', false)

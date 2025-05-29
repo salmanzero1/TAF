@@ -1,44 +1,47 @@
-.brand-building.no-header#experience
+-
+    var leadershipData = [
+        {
+            src: "taf-dummy.jpg",
+            name: "Abdulraouf Taher",
+            designation: "Executive Director"
+        },
+        {
+            src: "taf-dummy.jpg",
+            name: "Irene Debarry",
+            designation: "Legal & Governance"
+        },
+        {
+            src: "taf-dummy.jpg",
+            name: "Name Here",
+            designation: "Designation Here"
+        }
+    ]
+
+section.section#experience
     .container
-        .brand-building__wrapper
-            h2.brand-building__title
-                    | 20 years of brand building experience 
-                    
-            .brand-building__card 
-                .row
-                    .col-4.col-md-4.col-lg-3.col-xl-2
-                        .brand-building__card-item
-                            +img("experience/ADCB.svg", '', 'brand-building__card-img', false)
-                    .col-4.col-md-4.col-lg-3.col-xl-2
-                        .brand-building__card-item
-                            +img("experience/adidas.svg", '', 'brand-building__card-img', false)
-                    .col-4.col-md-4.col-lg-3.col-xl-2
-                        .brand-building__card-item
-                            +img("experience/FAB.svg", '', 'brand-building__card-img', false)
-                    .col-4.col-md-4.col-lg-3.col-xl-2
-                        .brand-building__card-item
-                            +img("experience/abu-dhabi.svg", '', 'brand-building__card-img', false)
-                    .col-4.col-md-4.col-lg-3.col-xl-2
-                        .brand-building__card-item
-                            +img("experience/etisalat.svg", '', 'brand-building__card-img', false)
-                    .col-4.col-md-4.col-lg-3.col-xl-2
-                        .brand-building__card-item
-                            +img("experience/fly-emirates.svg", '', 'brand-building__card-img', false)
-                    .col-4.col-md-4.col-lg-3.col-xl-2
-                        .brand-building__card-item
-                            +img("experience/visit-saudi.svg", '', 'brand-building__card-img', false)
-                    .col-4.col-md-4.col-lg-3.col-xl-2
-                        .brand-building__card-item
-                            +img("experience/visa.svg", '', 'brand-building__card-img', false)
-                    .col-4.col-md-4.col-lg-3.col-xl-2
-                        .brand-building__card-item
-                            +img("experience/PIF.svg", '', 'brand-building__card-img', false)
-                    .col-4.col-md-4.col-lg-3.col-xl-2
-                        .brand-building__card-item
-                            +img("experience/pepsi.svg", '', 'brand-building__card-img', false)
-                    .col-4.col-md-4.col-lg-3.col-xl-2
-                        .brand-building__card-item
-                            +img("experience/careem.svg", '', 'brand-building__card-img', false)
-                    .col-4.col-md-4.col-lg-3.col-xl-2
-                        .brand-building__card-item
-                            +img("experience/dubai.svg", '', 'brand-building__card-img', false)
+        div(class="grid grid-cols-12 gap-6 lg:gap-8")
+
+            div(class="flex flex-col justify-center col-span-12 lg:col-span-6 relative md:after:absolute md:after:w-screen md:after:h-full md:after:-right-0 md:after:bg-white md:after:z-10")
+                div(class="flex flex-col relative justify-between gap-10 h-full z-20")
+                    div(class="flex flex-col gap-10 lg:max-w-[500px]")
+                        +heading("Designed to lead without noise.", "h5", "h5 m-0")
+                        +heading("Our leadership team operates quietly, with precision.", "h2", "h2 m-0")
+                        +heading("It exists to preserve the structure’s intent, execute with focus, and hold the standard.", "h4", "h4 !font-normal m-0 opacity-50")
+
+                    div(class="template-slider-arrows relative gap-6 flex")
+                        div(class="swiper-button-prev btn-prev after:hidden !relative !top-auto !left-auto !right-auto !m-0 rtl:rotate-[180deg]")
+                            span(class="material-symbols-outlined text-[16px]") arrow_back_ios
+                        div(class="swiper-button-next btn-next after:hidden !relative !top-auto !left-auto !right-auto !m-0 rtl:rotate-[180deg]")
+                            span(class="material-symbols-outlined text-[16px]") arrow_forward_ios
+
+            div(class="flex flex-col justify-center col-span-12 lg:col-span-6")
+                div(class="w-full")
+                    .swiper-leadership.relative
+                        div(class="swiper-wrapper !pl-0")
+                            each data in leadershipData
+                                div(class="swiper-slide !w-[320px] md:!w-[376px] lg:!w-[429px]")
+                                    +img(data.src, "Souq Mina Zayed", "w-full h-[320px] md:h-[400px] lg:h-[500px] object-cover", false)
+                                    div(class="w-full flex flex-col gap-4 mt-24")
+                                        +heading(data.name, "h6", "h6 image-text m-0")
+                                        //- h6.font-medium !{data.name}
+                                        p.text-base.font-light.m-0.opacity-50 !{data.designation}

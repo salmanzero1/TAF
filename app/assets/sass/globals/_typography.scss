@@ -50,19 +50,11 @@ h5,
   @include media-breakpoint-up(lg) {
     @include font(24, 120%, 300);
   }
-
-  &--400 {
-    font-weight: 400
-  }
 }
 
 h6,
 .h6 {
-  @include font(16, 120%, 400);
-
-  @include media-breakpoint-up(lg) {
-    @include font(18, 120%, 400);
-  }
+  @include font(18, 120%, 400);
 
   // @include media-breakpoint-up(lg) {
   // 	@include font(20, 120%, 700);
@@ -125,8 +117,14 @@ label,
   @include media-breakpoint-up(md) {
     @include font(16, 100%, 500);
   }
+}
 
+.link {
+  @include font(16, 120%, 400);
 
+  @include media-breakpoint-up(lg) {
+    @include font(24, 120%, 400);
+  }
 }
 
 html[lang="ar"] {}

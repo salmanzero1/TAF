@@ -1,8 +1,30 @@
-section.background-noise.no-header
-    .background-noise__wrapper
-        .background-noise__wrapper-img
-            +dualImg("noise-bg.png",'noise-bg-mob.png', '' ,'', false)
-        .background-noise__wrapper-cont
-            h2.background-noise__title “So don’t become, some Background Noise.”
-            p.background-noise__desc "Radio Ga Ga" Freddie Mercury, 1984
+-
+  var collaborate = [
+    {
+      title: "Investment and co-investment"
+    },
+    {
+      title: "Development and design partnerships"
+    },
+    {
+      title: "Governance and advisory"
+    },
+    {
+      title: "Institutional media"
+    },
+  ]
+
+section.section
+  .container
+    .row
+      div(class="grid grid-cols-8 lg:grid-cols-12 gap-4")
+        div(class="flex flex-col justify-between col-span-8 lg:col-span-5")
+          div(class=("flex flex-col gap-6"))
+            +heading("Let’s build with intent.", "h5", "m-0")
+            +heading("We welcome aligned conversations in:", "h2", "m-0")
+          +link("mailto:careers@tariqalfuttaim.ae","careers@tariqalfuttaim.ae","mt-40 mt-lg-0")
+        div(class="flex flex-col col-span-8 lg:col-span-5 lg:col-start-8 gap-10 lg:gap-[48px] justify-center mt-[66px] mt-lg-0")
+          each data in collaborate
+            .line.line-image.pb-24
+              +heading(data.title, "h5", "h5 !font-normal image-text m-0")
 

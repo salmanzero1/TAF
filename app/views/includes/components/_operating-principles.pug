@@ -1,33 +1,33 @@
 -
-    var principles = [
-        {
-            title: "We move when it is right, not when it is fast"
-        },
-        {
-            title: "We act only when conviction is clear"
-        },
-        {
-            title: "We pursue alignment before scale"
-        },
-        {
-            title: "We design for longevity, not leverage"
-        },
-        {
-            title: "We build in silence, but with substance"
-        },
-    ]
+  var principles = [
+    {
+      title: "We move when it is right, not when it is fast"
+    },
+    {
+      title: "We act only when conviction is clear"
+    },
+    {
+      title: "We pursue alignment before scale"
+    },
+    {
+      title: "We design for longevity, not leverage"
+    },
+    {
+      title: "We build in silence, but with substance"
+    },
+  ]
 
 
 section.section.bg-blue.text-white#services
-    .container
-        .row
-            div(class="flex flex-col justify-between items-center text-center !max-w-[800px] m-auto")
-                +heading("Principles before opportunity.", "h5", "mb-24")
-                +heading("Our principles are not values on a wall. They are operational decisions:", "h2", "m-0")
-            div(class="mt-40 mt-lg-80 grid grid-cols-8 lg:grid-cols-12 space-y-10 lg:space-y-0")
-                div(class="flex flex-col justify-between col-span-8 lg:col-span-6")
-                    +img("/taf-about-image.jpg", "Operating Principles", "w-full h-full object-cover", false)
-                div(class="flex flex-col col-span-8 lg:col-span-5 lg:col-start-8 gap-10 lg:gap-[48px] justify-center")
-                    each principle in principles
-                        .line.pb-24
-                            +heading(principle.title, "h5", "h5--400 m-0")
+  .container
+    .row
+      div(class="flex flex-col justify-between items-center text-center !max-w-[800px] m-auto")
+        +heading("Principles before opportunity.", "h5", "mb-24")
+        +heading("Our principles are not values on a wall. They are operational decisions:", "h2", "m-0")
+      div(class="mt-40 mt-lg-80 grid grid-cols-8 lg:grid-cols-12 space-y-10 lg:space-y-0")
+        div(class="flex flex-col justify-between col-span-8 lg:col-span-6")
+          +img("/taf-about-image.jpg", "Operating Principles", "w-full h-full object-cover", false)
+        div(class="flex flex-col col-span-8 lg:col-span-5 lg:col-start-8 gap-10 lg:gap-[48px] justify-center")
+          each data in principles
+            .line.pb-24
+              +heading(data.title, "h5", "!font-normal m-0")
