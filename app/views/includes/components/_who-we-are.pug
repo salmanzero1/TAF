@@ -1,11 +1,11 @@
-section.creative-and-fast.no-header
-    .creative-and-fast__wrapper
-        .creative-and-fast__wrapper-img
-            video.creative-and-fast__video(width='100%', height='603',  autoplay muted loop)
-                source(src='/assets/images/brutally.mp4', type='video/mp4')        
-            //- +dualImg("Section-Divider.png",'Section-Divider-mob.png', '' ,'', false)
-        .creative-and-fast__wrapper-cont
-            h2.creative-and-fast__title Brutally 
-                span creative and fast,
-                |  powered by AI to cut through the noise and drive results at the speed of culture.
-
+section.text-white
+    .relative
+        div(class="flex h-full min-h-[765px] relative mask py-[100px] !lg:py-[120px]")
+            +img("/taf-about-us-image.jpg", "who we are", "!absolute top-0 left-0 w-full h-full object-cover", false)
+            div(class="w-full relative z-10 flex lg:items-center")
+                .container
+                    .row
+                        div(class="flex flex-col gap-10 lg:gap-[56px]")
+                            +heading("Measured capital. Structured intent.", "h5", "!font-normal m-0")
+                            +heading("Tariq Al Futtaim is a private investment structure, established to deploy capital with clarity and permanence.", "h2", "mb-24")
+                            //- +heading("Every development is a signal of intent - created not for trend, but for time.", "h5", "m-0")
