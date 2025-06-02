@@ -1,11 +1,41 @@
+-
+    var slideData = [
+        {
+            src: "taf-about-us-image.jpg",
+            overline: "Measured capital. Structured intent.",
+            title: "Tariq Al Futtaim is a private investment structure, established to deploy capital with clarity and permanence."
+        },
+        {
+            src: "taf-image-work.jpg",
+            overline: "Lorem Ipsum",
+            title: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        },
+    ]
+
 section.text-white
     .relative
-        div(class="flex h-full min-h-[765px] relative mask py-[100px] !lg:py-[120px]")
-            +img("/taf-about-us-image.jpg", "who we are", "!absolute top-0 left-0 w-full h-full object-cover", false)
-            div(class="w-full relative z-10 flex lg:items-center")
+
+        div(class="flex h-[716px] relative mask")
+            .swiper.swiper-about-image
+                .swiper-wrapper
+                    each data in slideData
+                        .swiper-slide(class="")
+                            +img(data.src, "who we are", " left-0 w-full h-full object-cover", false)
+                            //- +img(data.src, "who we are", "!absolute top-0 left-0 w-full h-full object-cover", false)
+
+            div(class="w-full absolute top-[50%] translate-y-[-50%] z-10 flex lg:items-center")
                 .container
                     .row
-                        div(class="flex flex-col gap-10 lg:gap-[56px]")
-                            +heading("Measured capital. Structured intent.", "h5", "!font-normal m-0")
-                            +heading("Tariq Al Futtaim is a private investment structure, established to deploy capital with clarity and permanence.", "h2", "mb-24")
-                            //- +heading("Every development is a signal of intent - created not for trend, but for time.", "h5", "m-0")
+                        .swiper.swiper-about-text.relative.flex.flex-col
+                            .swiper-wrapper
+                                each data in slideData
+                                    .swiper-slide
+                                        div(class="flex flex-col gap-10 lg:gap-[56px]")
+                                            +heading(data.overline, "h5", "!font-normal m-0")
+                                            +heading(data.title, "h2", "mb-[40px] lg:mb-[56px]")
+
+                            div(class="test-1 relative z-10 gap-6 flex")
+                                div(class="swiper-button-prev swiper-button-prev-about after:hidden !relative !top-auto !left-auto !right-auto !m-0 rtl:rotate-[180deg]")
+                                    span(class="material-symbols-outlined text-[16px]") arrow_back_ios
+                                div(class="swiper-button-next swiper-button-next-about after:hidden !relative !top-auto !left-auto !right-auto !m-0 rtl:rotate-[180deg]")
+                                    span(class="material-symbols-outlined text-[16px]") arrow_forward_ios
