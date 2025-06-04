@@ -15,7 +15,7 @@
 section.text-white
     .relative
 
-        div(class="flex h-[716px] relative mask")
+        div(class="flex h-[848px] md:h-[716px] relative mask")
             .swiper.swiper-about-image
                 .swiper-wrapper
                     each data in slideData
@@ -23,10 +23,10 @@ section.text-white
                             +img(data.src, "who we are", " left-0 w-full h-full object-cover", false)
                             //- +img(data.src, "who we are", "!absolute top-0 left-0 w-full h-full object-cover", false)
 
-            div(class="w-full absolute top-[50%] translate-y-[-50%] z-10 flex lg:items-center")
+            div(class="w-full absolute bottom-[100px] md:top-[50%] md:translate-y-[-50%] z-10 flex lg:items-center")
                 .container
                     .row
-                        .swiper.swiper-about-text.relative.flex.flex-col
+                        dix(class="swiper swiper-about-text relative flex flex-col !mx-5 !w-[calc(100%-40px)]")
                             .swiper-wrapper
                                 each data in slideData
                                     .swiper-slide
