@@ -150,6 +150,7 @@
 
       let aboutSwiperText = new Swiper(".swiper-about-text", {
         slidesPerView: 1,
+        // draggable: false,
         // spaceBetween: 20,
 
         navigation: {
